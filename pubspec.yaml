@@ -1,6 +1,6 @@
 name: athan_app
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
@@ -13,6 +13,7 @@ dependencies:
   cupertino_icons: ^1.0.9
   intl: ^0.20.3
   flutter_dotenv: ^6.0.1
+  dio: ^5.10.0
 
 dev_dependencies:
   flutter_test:

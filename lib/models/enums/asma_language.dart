@@ -1,0 +1,18 @@
+enum IslamicApiLanguage {
+  am('am'), ar('ar'), az('az'), bg('bg'), bn('bn'), bs('bs'), 
+  cs('cs'), da('da'), de('de'), dv('dv'), el('el'), en('en'), 
+  es('es'), et('et'), fa('fa'), fi('fi'), fr('fr'), gu('gu'), 
+  ha('ha'), haw('haw'), he('he'), hi('hi'), hr('hr'), hu('hu'), 
+  hy('hy'), id('id'), isCode('is'), it('it'), ja('ja'), ka('ka'), 
+  kk('kk'), km('km'), kn('kn'), ko('ko'), ku('ku'), lo('lo'), 
+  lt('lt'), lv('lv'), mg('mg'), mi('mi'), ml('ml'), mr('mr'), 
+  ms('ms'), mt('mt'), my('my'), ne('ne'), nl('nl'), no('no'), 
+  orCode('or'), pa('pa'), pl('pl'), ps('ps'), pt('pt'), ro('ro'), 
+  ru('ru'), sd('sd'), si('si'), sk('sk'), sl('sl'), so('so'), 
+  sq('sq'), sr('sr'), sv('sv'), sw('sw'), ta('ta'), te('te'), 
+  th('th'), ti('ti'), tl('tl'), tr('tr'), ug('ug'), uk('uk'), 
+  ur('ur'), uz('uz'), vi('vi'), zh('zh');
+
+  final String code;
+  const IslamicApiLanguage(this.code);
+}
