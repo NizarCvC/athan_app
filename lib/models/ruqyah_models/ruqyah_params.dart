@@ -1,4 +1,4 @@
-import 'package:athan_app/models/enums/asma_language.dart';
+import 'package:athan_app/models/enums/supported_language.dart';
 import 'package:athan_app/models/enums/ruqyah_program.dart';
 import 'package:athan_app/models/enums/ruqyah_request_type.dart';
 import 'package:athan_app/models/enums/ruqyah_source.dart';
@@ -7,7 +7,7 @@ import 'package:athan_app/models/enums/ruqyah_topic.dart';
 class RuqyahParams {
   final RuqyahRequestType type;
   final String apiKey;
-  final IslamicApiLanguage? lang;
+  final SupportedLanguage? lang;
   final RuqyahProgram? program;
   final RuqyahSource? source;
   final RuqyahTopic? topic;
@@ -24,15 +24,12 @@ class RuqyahParams {
     this.id,
     this.random,
   }) : assert(
-          type == RuqyahRequestType.language || lang != null,
-          'Language is required unless type is "language".',
-        );
+         type == RuqyahRequestType.language || lang != null,
+         'Language is required unless type is "language".',
+       );
 
   Map<String, dynamic> toQueryParameters() {
-    final params = <String, dynamic>{
-      'type': type.value,
-      'api_key': apiKey,
-    };
+    final params = <String, dynamic>{'type': type.value, 'api_key': apiKey};
 
     if (type != RuqyahRequestType.language && lang != null) {
       params['lang'] = lang!.code;

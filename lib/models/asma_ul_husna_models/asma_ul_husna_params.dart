@@ -1,7 +1,7 @@
-import 'package:athan_app/models/enums/asma_language.dart';
+import 'package:athan_app/models/enums/supported_language.dart';
 
 class AsmaUlHusnaParams {
-  final IslamicApiLanguage language;
+  final SupportedLanguage language;
   final String apiKey;
 
   AsmaUlHusnaParams({required this.language, required this.apiKey});
