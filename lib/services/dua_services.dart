@@ -67,24 +67,4 @@ class DuaServices {
       rethrow;
     }
   }
-
-  Future<LanguageResponse> getDuaSupportedLanguages(
-    DuaParams queryParams,
-  ) async {
-    try {
-      dio.options.baseUrl = AppConstants.baseUrl;
-      final response = await dio.get(
-        ApiPaths.duaUrl,
-        queryParameters: queryParams.toQueryParameters(),
-      );
-
-      if (response.statusCode == 200) {
-        return LanguageResponse.fromJson(response.data);
-      } else {
-        throw Exception(response.statusMessage);
-      }
-    } catch (e) {
-      rethrow;
-    }
-  }
 }
