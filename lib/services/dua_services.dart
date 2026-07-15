@@ -1,5 +1,4 @@
 import 'package:athan_app/models/dua_models/dua_category_response.dart';
-import 'package:athan_app/models/language_models/language_response.dart';
 import 'package:athan_app/models/dua_models/dua_params.dart';
 import 'package:athan_app/models/dua_models/dua_sub_category_response.dart';
 import 'package:athan_app/models/dua_models/dua_translation_response.dart';
