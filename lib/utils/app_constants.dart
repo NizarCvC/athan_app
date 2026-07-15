@@ -5,4 +5,5 @@ class AppConstants {
       dotenv.env['API_KEY'] ??
       (throw Exception('API_KEY is missing in .env file'));
   static const String baseUrl = 'https://islamicapi.com';
+  static const String appName = 'Athan App';
 }
