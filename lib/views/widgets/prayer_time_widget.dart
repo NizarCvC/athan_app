@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PrayerTimeWidget extends StatelessWidget {
-  final Icon icon;
+  final Widget icon;
   final String title;
   final String prayerTime;
   final bool isNotificationActive;
@@ -36,7 +36,6 @@ class PrayerTimeWidget extends StatelessWidget {
                     : Icons.notifications_off_rounded,
                 size: size.height * 0.035,
               ),
-              //color: AppColors.primaryColor,)
             ),
           ],
         ),

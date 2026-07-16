@@ -26,7 +26,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
   }
 
   List<Widget> _buildScreens(BuildContext context) {
-    return const [PrayerPage(), Scaffold(), Scaffold(), Scaffold()];
+    return const [PrayerPage(), Scaffold(), Scaffold(), Scaffold(), Scaffold()];
   }
 
   List<ItemConfig> _navBarsItems() {
@@ -43,11 +43,16 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
       ),
       ItemConfig(
         icon: const Icon(Icons.mosque_outlined),
-        title: 'Dua',
+        title: 'Zakat',
         activeForegroundColor: Theme.of(context).primaryColor,
       ),
       ItemConfig(
         icon: const Icon(Icons.mosque_outlined),
+        title: 'Dua',
+        activeForegroundColor: Theme.of(context).primaryColor,
+      ),
+      ItemConfig(
+        icon: const Icon(Icons.settings),
         title: 'Settings',
         activeForegroundColor: Theme.of(context).primaryColor,
       ),
@@ -76,9 +81,13 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
             item: _navBarsItems()[3],
             screen: _buildScreens(context)[3],
           ),
+          PersistentTabConfig(
+            item: _navBarsItems()[4],
+            screen: _buildScreens(context)[4],
+          ),
         ],
         navBarBuilder: (navbarConfig) =>
-            Style1BottomNavBar(navBarConfig: navbarConfig),
+            Style4BottomNavBar(navBarConfig: navbarConfig),
         onTabChanged: (index) {
           setState(() {
             currentIndex = index;
