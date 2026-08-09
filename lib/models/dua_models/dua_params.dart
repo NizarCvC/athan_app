@@ -1,4 +1,4 @@
-import 'package:athan_app/models/enums/dua_request_type.dart';
+import 'package:athan_app/models/ruqyah_models/dua_request_type.dart';
 import 'package:athan_app/models/enums/supported_language.dart';
 
 class DuaParams {

@@ -1,3 +1,4 @@
+import 'package:athan_app/utils/theme/app_colors.dart';
 import 'package:athan_app/views/pages/prayer_page.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
@@ -26,7 +27,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
   }
 
   List<Widget> _buildScreens(BuildContext context) {
-    return const [PrayerPage(), Scaffold(), Scaffold(), Scaffold(), Scaffold()];
+    return const [PrayerPage(), Scaffold(), Scaffold(), Scaffold()];
   }
 
   List<ItemConfig> _navBarsItems() {
@@ -51,10 +52,26 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
         title: 'Dua',
         activeForegroundColor: Theme.of(context).primaryColor,
       ),
-      ItemConfig(
-        icon: const Icon(Icons.settings),
-        title: 'Settings',
-        activeForegroundColor: Theme.of(context).primaryColor,
+    ];
+  }
+
+  List<PersistentTabConfig> _tabItems() {
+    return [
+      PersistentTabConfig(
+        item: _navBarsItems()[0],
+        screen: _buildScreens(context)[0],
+      ),
+      PersistentTabConfig(
+        item: _navBarsItems()[1],
+        screen: _buildScreens(context)[1],
+      ),
+      PersistentTabConfig(
+        item: _navBarsItems()[2],
+        screen: _buildScreens(context)[2],
+      ),
+      PersistentTabConfig(
+        item: _navBarsItems()[3],
+        screen: _buildScreens(context)[3],
       ),
     ];
   }
@@ -64,28 +81,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
     return Scaffold(
       body: PersistentTabView(
         controller: _controller,
-        tabs: [
-          PersistentTabConfig(
-            item: _navBarsItems()[0],
-            screen: _buildScreens(context)[0],
-          ),
-          PersistentTabConfig(
-            item: _navBarsItems()[1],
-            screen: _buildScreens(context)[1],
-          ),
-          PersistentTabConfig(
-            item: _navBarsItems()[2],
-            screen: _buildScreens(context)[2],
-          ),
-          PersistentTabConfig(
-            item: _navBarsItems()[3],
-            screen: _buildScreens(context)[3],
-          ),
-          PersistentTabConfig(
-            item: _navBarsItems()[4],
-            screen: _buildScreens(context)[4],
-          ),
-        ],
+        tabs: _tabItems(),
         navBarBuilder: (navbarConfig) =>
             Style4BottomNavBar(navBarConfig: navbarConfig),
         onTabChanged: (index) {
@@ -93,7 +89,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
             currentIndex = index;
           });
         },
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         handleAndroidBackButtonPress: true,
         resizeToAvoidBottomInset: true,
       ),

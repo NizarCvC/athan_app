@@ -1,4 +1,4 @@
-import 'package:athan_app/generated/l10n.dart';
+import 'package:athan_app/utils/generated/l10n.dart';
 import 'package:athan_app/utils/app_constants.dart';
 import 'package:athan_app/utils/theme/app_theme.dart';
 import 'package:athan_app/views/pages/custom_bottom_navbar.dart';

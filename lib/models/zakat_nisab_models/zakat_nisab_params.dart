@@ -1,6 +1,6 @@
-import 'package:athan_app/models/enums/supported_currency.dart';
-import 'package:athan_app/models/enums/zakat_standard.dart';
-import 'package:athan_app/models/enums/zakat_unit.dart';
+import 'package:athan_app/models/zakat_nisab_models/supported_currency.dart';
+import 'package:athan_app/models/zakat_nisab_models/zakat_standard.dart';
+import 'package:athan_app/models/zakat_nisab_models/zakat_unit.dart';
 
 class ZakatNisabParams {
   final ZakatStandard? standard; 

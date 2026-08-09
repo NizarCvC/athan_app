@@ -1,7 +1,7 @@
-import 'package:athan_app/models/enums/asr_school.dart';
+import 'package:athan_app/models/prayer_time_models/asr_school.dart';
 import 'package:athan_app/models/enums/calculation_method.dart';
-import 'package:athan_app/models/enums/calendar_method.dart';
-import 'package:athan_app/models/enums/hijri_shifting.dart';
+import 'package:athan_app/models/fasting_models/calendar_method.dart';
+import 'package:athan_app/models/fasting_models/hijri_shifting.dart';
 
 class PrayerTimeParams {
   final double lat;

@@ -1,8 +1,8 @@
 import 'package:athan_app/models/enums/supported_language.dart';
-import 'package:athan_app/models/enums/ruqyah_program.dart';
-import 'package:athan_app/models/enums/ruqyah_request_type.dart';
-import 'package:athan_app/models/enums/ruqyah_source.dart';
-import 'package:athan_app/models/enums/ruqyah_topic.dart';
+import 'package:athan_app/models/ruqyah_models/ruqyah_program.dart';
+import 'package:athan_app/models/ruqyah_models/ruqyah_request_type.dart';
+import 'package:athan_app/models/ruqyah_models/ruqyah_source.dart';
+import 'package:athan_app/models/ruqyah_models/ruqyah_topic.dart';
 
 class RuqyahParams {
   final RuqyahRequestType type;
