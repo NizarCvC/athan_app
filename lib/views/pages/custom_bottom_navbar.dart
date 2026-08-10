@@ -1,6 +1,12 @@
 import 'package:athan_app/utils/theme/app_colors.dart';
+import 'package:athan_app/view_models/dua_cubit/dua_cubit.dart';
+import 'package:athan_app/view_models/fasting_cubit/fasting_cubit.dart';
+import 'package:athan_app/view_models/prayer_time_cubit/prayer_time_cubit.dart';
+import 'package:athan_app/view_models/ruqyah_cubit/ruqyah_cubit.dart';
+import 'package:athan_app/view_models/zakat_nisab_cubit/zakat_nisab_cubit.dart';
 import 'package:athan_app/views/pages/prayer_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class CustomBottomNavbar extends StatefulWidget {
@@ -12,12 +18,11 @@ class CustomBottomNavbar extends StatefulWidget {
 
 class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
   late final PersistentTabController _controller;
-  int currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    _controller = PersistentTabController();
+    _controller = PersistentTabController(initialIndex: 0);
   }
 
   @override
@@ -26,52 +31,56 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
     super.dispose();
   }
 
-  List<Widget> _buildScreens(BuildContext context) {
-    return const [PrayerPage(), Scaffold(), Scaffold(), Scaffold()];
-  }
-
-  List<ItemConfig> _navBarsItems() {
-    return [
-      ItemConfig(
-        icon: const Icon(Icons.mosque_outlined),
-        title: 'Prayer',
-        activeForegroundColor: Theme.of(context).primaryColor,
-      ),
-      ItemConfig(
-        icon: const Icon(Icons.mosque_outlined),
-        title: 'Fasting',
-        activeForegroundColor: Theme.of(context).primaryColor,
-      ),
-      ItemConfig(
-        icon: const Icon(Icons.mosque_outlined),
-        title: 'Zakat',
-        activeForegroundColor: Theme.of(context).primaryColor,
-      ),
-      ItemConfig(
-        icon: const Icon(Icons.mosque_outlined),
-        title: 'Dua',
-        activeForegroundColor: Theme.of(context).primaryColor,
-      ),
-    ];
-  }
-
-  List<PersistentTabConfig> _tabItems() {
+  List<PersistentTabConfig> _buildTabs(BuildContext context) {
+    final activeColor = Theme.of(context).primaryColor;
     return [
       PersistentTabConfig(
-        item: _navBarsItems()[0],
-        screen: _buildScreens(context)[0],
+        screen: BlocProvider(
+          create: (context) =>
+              PrayerTimeCubit()..fetchTodayPrayerTimes('Medina'),
+          child: const PrayerPage(),
+        ),
+        item: ItemConfig(
+          icon: const Icon(Icons.mosque_outlined),
+          title: 'Prayer',
+          activeForegroundColor: activeColor,
+        ),
       ),
       PersistentTabConfig(
-        item: _navBarsItems()[1],
-        screen: _buildScreens(context)[1],
+        screen: BlocProvider(
+          create: (context) => FastingCubit(),
+          child: const Scaffold(),
+        ),
+        item: ItemConfig(
+          icon: const Icon(Icons.nights_stay_outlined),
+          title: 'Fasting',
+          activeForegroundColor: activeColor,
+        ),
       ),
       PersistentTabConfig(
-        item: _navBarsItems()[2],
-        screen: _buildScreens(context)[2],
+        screen: BlocProvider(
+          create: (context) => ZakatNisabCubit(),
+          child: const Scaffold(),
+        ),
+        item: ItemConfig(
+          icon: const Icon(Icons.monetization_on_outlined),
+          title: 'Zakat',
+          activeForegroundColor: activeColor,
+        ),
       ),
       PersistentTabConfig(
-        item: _navBarsItems()[3],
-        screen: _buildScreens(context)[3],
+        screen: MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (context) => DuaCubit()),
+            BlocProvider(create: (context) => RuqyahCubit()),
+          ],
+          child: const Scaffold(),
+        ),
+        item: ItemConfig(
+          icon: const Icon(Icons.back_hand_outlined),
+          title: 'Dua',
+          activeForegroundColor: activeColor,
+        ),
       ),
     ];
   }
@@ -81,14 +90,9 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
     return Scaffold(
       body: PersistentTabView(
         controller: _controller,
-        tabs: _tabItems(),
+        tabs: _buildTabs(context),
         navBarBuilder: (navbarConfig) =>
             Style4BottomNavBar(navBarConfig: navbarConfig),
-        onTabChanged: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
         backgroundColor: AppColors.white,
         handleAndroidBackButtonPress: true,
         resizeToAvoidBottomInset: true,

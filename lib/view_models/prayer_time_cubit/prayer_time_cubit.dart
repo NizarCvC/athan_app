@@ -1,7 +1,10 @@
 import 'package:athan_app/models/prayer_time_models/prayer_time_params.dart';
+import 'package:athan_app/models/prayer_time_models/prayer_times.dart';
 import 'package:athan_app/models/prayer_time_models/single_day_data.dart';
 import 'package:athan_app/services/prayer_time_services.dart';
 import 'package:athan_app/utils/app_constants.dart';
+import 'package:athan_app/utils/helpers.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
 
@@ -43,49 +46,44 @@ class PrayerTimeCubit extends Cubit<PrayerTimeState> {
     }
   }
 
-  String getNextPrayerTime(SingleDayData data) {
-    final currentTime = Duration(
-      hours: DateTime.now().hour,
-      minutes: DateTime.now().minute,
+  String getNextPrayerTime(PrayerTimes times) {
+    final currentTime = TimeOfDay(
+      hour: TimeOfDay.now().hour,
+      minute: TimeOfDay.now().minute,
     );
-    final prayerTimes = data.times!;
     final prayerTimesList = [
-      prayerTimes.fajr,
-      prayerTimes.sunrise,
-      prayerTimes.dhuhr,
-      prayerTimes.asr,
-      prayerTimes.maghrib,
-      prayerTimes.isha,
+      times.fajr,
+      times.sunrise,
+      times.dhuhr,
+      times.asr,
+      times.maghrib,
+      times.isha,
     ];
 
     for (var i = 1; i < prayerTimesList.length; i++) {
-      final prevPrayerTime = _getTimeFromString(prayerTimesList[i - 1]!);
-      final nextPrayerTime = _getTimeFromString(prayerTimesList[i]!);
-
-      if (currentTime > prevPrayerTime && currentTime < nextPrayerTime) {
-        return '${nextPrayerTime.inHours}:${nextPrayerTime.inMinutes}';
+      final prevPrayerTime = Helpers.getTimeFromString(prayerTimesList[i - 1]!);
+      final nextPrayerTime = Helpers.getTimeFromString(prayerTimesList[i]!);
+      if (currentTime.isAfter(prevPrayerTime) &&
+          currentTime.isBefore(nextPrayerTime)) {
+        String hour = Helpers.formatNumber(nextPrayerTime.hour);
+        String minute = Helpers.formatNumber(nextPrayerTime.minute);
+        return '$hour:$minute';
       }
     }
 
-    return prayerTimes.fajr!;
+    return times.fajr!;
   }
 
-  String getNextPrayerName(SingleDayData data) {
-    final prayerTimes = data.times!;
+  String getNextPrayerName(PrayerTimes times) {
     final prayerNamesTimes = {
-      prayerTimes.fajr: 'Fajr',
-      prayerTimes.sunrise: 'Sunrise',
-      prayerTimes.dhuhr: 'Dhuhr',
-      prayerTimes.asr: 'Asr',
-      prayerTimes.maghrib: 'Maghrib',
-      prayerTimes.isha: 'Isha',
+      times.fajr: 'Fajr',
+      times.sunrise: 'Sunrise',
+      times.dhuhr: 'Dhuhr',
+      times.asr: 'Asr',
+      times.maghrib: 'Maghrib',
+      times.isha: 'Isha',
     };
 
-    return prayerNamesTimes[getNextPrayerTime(data)]!;
-  }
-
-  Duration _getTimeFromString(String timeStr) {
-    final time = timeStr.split(':');
-    return Duration(hours: int.parse(time[0]), minutes: int.parse(time[1]));
+    return prayerNamesTimes[getNextPrayerTime(times)]!;
   }
 }
