@@ -1,5 +1,6 @@
 import 'package:athan_app/utils/app_assets.dart';
 import 'package:athan_app/utils/helpers.dart';
+import 'package:athan_app/utils/router/app_router.dart';
 import 'package:athan_app/utils/theme/app_colors.dart';
 import 'package:athan_app/view_models/prayer_time_cubit/prayer_time_cubit.dart';
 import 'package:athan_app/views/widgets/prayer_time_widgets/next_prayer_time_counter.dart';
@@ -45,7 +46,41 @@ class _PrayerPageState extends State<PrayerPage> {
             final prayerTimes = data.times!;
             final nextPrayerTime = cubit.getNextPrayerTime(prayerTimes);
             return Scaffold(
+              extendBodyBehindAppBar: true,
               backgroundColor: AppColors.primaryColor,
+              appBar: AppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                actions: [
+                  IconButton(
+                    onPressed: () {},
+                    style: IconButton.styleFrom(
+                      backgroundColor: AppColors.white.withOpacity(0.9),
+                    ),
+                    icon: const Icon(
+                      Icons.explore_outlined,
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                  SizedBox(width: size.width * 0.005),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(
+                        context,
+                        rootNavigator: true,
+                      ).pushNamed(AppRoutes.settings);
+                    },
+                    style: IconButton.styleFrom(
+                      backgroundColor: AppColors.white.withOpacity(0.9),
+                    ),
+                    icon: const Icon(
+                      Icons.settings,
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                ],
+              ),
               body: Column(
                 children: [
                   SizedBox(
@@ -107,9 +142,13 @@ class _PrayerPageState extends State<PrayerPage> {
                         crossAxisAlignment: .start,
                         mainAxisAlignment: .spaceEvenly,
                         children: [
-                          Text(
-                            '${date.gregorian?.year} ${date.gregorian?.month?.en} ${date.gregorian?.day}',
-                            style: textTheme.headlineSmall,
+                          Row(
+                            children: [
+                              Text(
+                                '${date.gregorian?.year} ${date.gregorian?.month?.en} ${date.gregorian?.day}',
+                                style: textTheme.headlineSmall,
+                              ),
+                            ],
                           ),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.fajrIcon),

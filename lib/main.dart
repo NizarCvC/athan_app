@@ -1,5 +1,7 @@
 import 'package:athan_app/utils/generated/l10n.dart';
 import 'package:athan_app/utils/app_constants.dart';
+import 'package:athan_app/utils/router/app_router.dart';
+import 'package:athan_app/utils/router/app_routes.dart';
 import 'package:athan_app/utils/theme/app_theme.dart';
 import 'package:athan_app/views/pages/custom_bottom_navbar.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +33,8 @@ class AthanApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
+      initialRoute: AppRoutes.home,
+      onGenerateRoute: AppRouter.generateRoute,
       home: const CustomBottomNavbar(),
     );
   }
