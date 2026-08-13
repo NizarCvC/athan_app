@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:athan_app/utils/app_assets.dart';
 import 'package:athan_app/utils/helpers.dart';
 import 'package:athan_app/utils/router/app_router.dart';
@@ -20,17 +21,46 @@ class PrayerPage extends StatefulWidget {
 class _PrayerPageState extends State<PrayerPage> {
   Widget _buildImageIcon(BuildContext context, String assetPath) {
     final size = MediaQuery.of(context).size;
-    return Image.asset(assetPath, height: size.height * 0.05);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Opacity(
+      opacity: isDark ? 0.8 : 1.0,
+      child: Image.asset(assetPath, height: size.height * 0.05),
+    );
+  }
+
+  Widget _buildCustomIconButton({
+    required BuildContext context,
+    required VoidCallback onPressed,
+    required IconData icon,
+  }) {
+    final size = MediaQuery.of(context).size;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return ClipOval(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
+        child: Container(
+          color: isDark
+              ? Colors.white.withValues(alpha: 0.1)
+              : AppColors.white.withValues(alpha: 0.2),
+          child: IconButton(
+            onPressed: onPressed,
+            icon: Icon(icon, size: size.height * 0.035, color: AppColors.white),
+          ),
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final cubit = BlocProvider.of<PrayerTimeCubit>(context);
+    final prayerCubit = BlocProvider.of<PrayerTimeCubit>(context);
     final size = MediaQuery.of(context).size;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        statusBarBrightness: Brightness.dark,
+      value: SystemUiOverlayStyle(
+        statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
         statusBarIconBrightness: Brightness.light,
       ),
       child: BlocBuilder<PrayerTimeCubit, PrayerTimeState>(
@@ -47,43 +77,37 @@ class _PrayerPageState extends State<PrayerPage> {
             final data = state.todayPrayerTimes!;
             final date = data.date!;
             final prayerTimes = data.times!;
-            final nextPrayerTime = cubit.getNextPrayerTime(prayerTimes);
+            final nextPrayerTime = prayerCubit.getNextPrayerTime(prayerTimes);
             return Scaffold(
-              backgroundColor: AppColors.primaryColor,
+              backgroundColor: isDark
+                  ? AppColors.darkPrimaryColor
+                  : AppColors.primaryColor,
               body: CustomScrollView(
                 physics: const BounceTopClampBottomPhysics(),
                 slivers: [
                   SliverAppBar(
                     expandedHeight: size.height * 0.3,
                     pinned: true,
-                    backgroundColor: AppColors.primaryColor,
+                    backgroundColor: isDark
+                        ? AppColors.black
+                        : AppColors.primaryColor,
                     elevation: 0,
                     actions: [
-                      IconButton(
+                      _buildCustomIconButton(
+                        context: context,
                         onPressed: () {},
-                        style: IconButton.styleFrom(
-                          backgroundColor: AppColors.white.withOpacity(0.9),
-                        ),
-                        icon: const Icon(
-                          Icons.explore_outlined,
-                          color: AppColors.primaryColor,
-                        ),
+                        icon: Icons.explore_outlined,
                       ),
-                      SizedBox(width: size.width * 0.005),
-                      IconButton(
+                      SizedBox(width: size.width * 0.02),
+                      _buildCustomIconButton(
+                        context: context,
                         onPressed: () {
                           Navigator.of(
                             context,
                             rootNavigator: true,
                           ).pushNamed(AppRoutes.settings);
                         },
-                        style: IconButton.styleFrom(
-                          backgroundColor: AppColors.white.withOpacity(0.9),
-                        ),
-                        icon: const Icon(
-                          Icons.settings,
-                          color: AppColors.primaryColor,
-                        ),
+                        icon: Icons.settings_outlined,
                       ),
                       const SizedBox(width: 12),
                     ],
@@ -95,7 +119,10 @@ class _PrayerPageState extends State<PrayerPage> {
                             AppAssets.prayerWallpaper,
                             fit: BoxFit.cover,
                           ),
-                          Container(color: Colors.black.withOpacity(0.2)),
+                          Container(
+                            // ignore: deprecated_member_use
+                            color: Colors.black.withOpacity(isDark ? 0.5 : 0.2),
+                          ),
                           SafeArea(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -107,7 +134,7 @@ class _PrayerPageState extends State<PrayerPage> {
                                   ),
                                 ),
                                 Text(
-                                  cubit.getNextPrayerName(prayerTimes),
+                                  prayerCubit.getNextPrayerName(prayerTimes),
                                   style: textTheme.displayMedium!.copyWith(
                                     color: AppColors.white,
                                   ),
@@ -132,9 +159,9 @@ class _PrayerPageState extends State<PrayerPage> {
                   ),
                   SliverToBoxAdapter(
                     child: Container(
-                      decoration: const BoxDecoration(
-                        color: AppColors.white,
-                        borderRadius: BorderRadius.only(
+                      decoration: BoxDecoration(
+                        color: isDark ? AppColors.black : AppColors.white,
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(24.0),
                           topRight: Radius.circular(24.0),
                         ),
@@ -148,7 +175,9 @@ class _PrayerPageState extends State<PrayerPage> {
                         children: [
                           Text(
                             '${date.gregorian?.year} ${date.gregorian?.month?.en} ${date.gregorian?.day}',
-                            style: textTheme.headlineSmall,
+                            style: textTheme.headlineSmall!.copyWith(
+                              fontWeight: .w600,
+                            ),
                           ),
                           const SizedBox(height: 16),
                           PrayerTimeWidget(

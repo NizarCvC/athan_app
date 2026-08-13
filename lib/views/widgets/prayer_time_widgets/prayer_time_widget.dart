@@ -14,17 +14,19 @@ class PrayerTimeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme.of(
+      context,
+    ).textTheme.titleLarge!.copyWith(fontWeight: .w400);
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: icon,
-      title: Text(title, style: textTheme.titleMedium),
+      title: Text(title, style: textTheme),
       trailing: SizedBox(
         width: size.width * 0.3,
         child: Row(
           mainAxisAlignment: .end,
           children: [
-            Text(prayerTime, style: textTheme.titleMedium),
+            Text(prayerTime, style: textTheme),
             SizedBox(width: size.width * 0.02),
           ],
         ),

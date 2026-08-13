@@ -1,5 +1,7 @@
-import 'package:athan_app/views/widgets/prayer_time_widgets/setting_widget.dart';
+import 'package:athan_app/view_models/settings_cubit/settings_cubit.dart';
+import 'package:athan_app/views/widgets/settings_widgets/setting_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -8,6 +10,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final textTheme = Theme.of(context).textTheme;
+    final cubit = BlocProvider.of<SettingsCubit>(context);
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
       body: Padding(
@@ -23,55 +26,63 @@ class SettingsPage extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
                     SettingWidget(
-                      icon: const Icon(Icons.notifications_none_outlined),
+                      icon: Icons.notifications_none_outlined,
                       title: 'Notifications',
                       onTap: () {},
                     ),
                     const Divider(),
                     SettingWidget(
-                      icon: const Icon(Icons.dark_mode_outlined),
+                      icon: Icons.dark_mode_outlined,
                       title: 'App Theme',
                       onTap: () {},
+                      trailing: Switch(
+                        value: cubit.state.themeMode == ThemeMode.dark
+                            ? true
+                            : false,
+                        onChanged: (bool newValue) {
+                          cubit.toggleTheme(newValue);
+                        },
+                      ),
                     ),
                     const Divider(),
                     SettingWidget(
-                      icon: const Icon(Icons.location_on_outlined),
+                      icon: Icons.location_on_outlined,
                       title: 'Location',
                       onTap: () {},
                     ),
                     const Divider(),
                     SettingWidget(
-                      icon: const Icon(Icons.calendar_month_rounded),
+                      icon: Icons.calendar_month_rounded,
                       title: 'Calendar Format',
                       onTap: () {},
                     ),
                     const Divider(),
                     SettingWidget(
-                      icon: const Icon(Icons.access_time_rounded),
+                      icon: Icons.access_time_rounded,
                       title: 'Time Format',
                       onTap: () {},
                     ),
                     const Divider(),
                     SettingWidget(
-                      icon: const Icon(Icons.language_rounded),
+                      icon: Icons.language_rounded,
                       title: 'Language',
                       onTap: () {},
                     ),
                     const Divider(),
                     SettingWidget(
-                      icon: const Icon(Icons.location_city_outlined),
+                      icon: Icons.location_city_outlined,
                       title: 'Calculation Method',
                       onTap: () {},
                     ),
                     const Divider(),
                     SettingWidget(
-                      icon: const Icon(Icons.school_outlined),
+                      icon: Icons.school_outlined,
                       title: 'Juristic Method', // أو Juristic Method
                       onTap: () {},
                     ),
                     const Divider(),
                     SettingWidget(
-                      icon: const Icon(Icons.feedback_outlined),
+                      icon: Icons.feedback_outlined,
                       title: 'Feedback',
                       onTap: () {},
                     ),

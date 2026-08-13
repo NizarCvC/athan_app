@@ -3,6 +3,7 @@ import 'package:athan_app/view_models/dua_cubit/dua_cubit.dart';
 import 'package:athan_app/view_models/fasting_cubit/fasting_cubit.dart';
 import 'package:athan_app/view_models/prayer_time_cubit/prayer_time_cubit.dart';
 import 'package:athan_app/view_models/ruqyah_cubit/ruqyah_cubit.dart';
+import 'package:athan_app/view_models/settings_cubit/settings_cubit.dart';
 import 'package:athan_app/view_models/zakat_nisab_cubit/zakat_nisab_cubit.dart';
 import 'package:athan_app/views/pages/prayer_page.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,10 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
   }
 
   List<PersistentTabConfig> _buildTabs(BuildContext context) {
-    final activeColor = Theme.of(context).primaryColor;
+    final settingsCubit = BlocProvider.of<SettingsCubit>(context);
+    final activeColor = settingsCubit.state.themeMode == ThemeMode.light
+        ? AppColors.black
+        : AppColors.white;
     return [
       PersistentTabConfig(
         screen: BlocProvider(
@@ -87,13 +91,20 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
 
   @override
   Widget build(BuildContext context) {
+    final settingsCubit = BlocProvider.of<SettingsCubit>(context);
     return Scaffold(
       body: PersistentTabView(
         controller: _controller,
         tabs: _buildTabs(context),
-        navBarBuilder: (navbarConfig) =>
-            Style4BottomNavBar(navBarConfig: navbarConfig),
-        backgroundColor: AppColors.white,
+        navBarBuilder: (navbarConfig) => Style4BottomNavBar(
+          navBarConfig: navbarConfig,
+          navBarDecoration: NavBarDecoration(
+            color: settingsCubit.state.themeMode == ThemeMode.light
+                ? AppColors.white
+                : AppColors.black,
+          ),
+        ),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         handleAndroidBackButtonPress: true,
         resizeToAvoidBottomInset: true,
       ),
