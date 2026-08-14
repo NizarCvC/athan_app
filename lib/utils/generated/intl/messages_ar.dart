@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a en locale. All the
+// This is a library that provides messages for a ar locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -18,18 +18,18 @@ final messages = new MessageLookup();
 typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 
 class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'en';
+  String get localeName => 'ar';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "Sunrise": MessageLookupByLibrary.simpleMessage("Sunrise"),
-    "asr": MessageLookupByLibrary.simpleMessage("Asr"),
-    "dhuhr": MessageLookupByLibrary.simpleMessage("Dhuhr"),
-    "fajr": MessageLookupByLibrary.simpleMessage("Fajr"),
-    "isha": MessageLookupByLibrary.simpleMessage("Isha"),
-    "lastthird": MessageLookupByLibrary.simpleMessage("Last Third"),
-    "maghrib": MessageLookupByLibrary.simpleMessage("Maghrib"),
-    "midnight": MessageLookupByLibrary.simpleMessage("Midnight"),
-    "nextPray": MessageLookupByLibrary.simpleMessage("Next Pray"),
+    "Sunrise": MessageLookupByLibrary.simpleMessage("شروق الشمس"),
+    "asr": MessageLookupByLibrary.simpleMessage("العصر"),
+    "dhuhr": MessageLookupByLibrary.simpleMessage("الظهر"),
+    "fajr": MessageLookupByLibrary.simpleMessage("الفجر"),
+    "isha": MessageLookupByLibrary.simpleMessage("العشاء"),
+    "lastthird": MessageLookupByLibrary.simpleMessage("الثلث الأخير"),
+    "maghrib": MessageLookupByLibrary.simpleMessage("المغرب"),
+    "midnight": MessageLookupByLibrary.simpleMessage("منتصف الليل"),
+    "nextPray": MessageLookupByLibrary.simpleMessage("الصلاة التالية"),
   };
 }

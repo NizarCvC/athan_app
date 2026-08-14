@@ -1,1 +1,11 @@
-{}
+{
+  "nextPray": "Next Pray",
+  "fajr": "Fajr",
+  "Sunrise": "Sunrise",
+  "dhuhr": "Dhuhr",
+  "asr": "Asr",
+  "maghrib": "Maghrib",
+  "isha": "Isha",
+  "midnight": "Midnight",
+  "lastthird": "Last Third"
+}

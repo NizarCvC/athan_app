@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  intl_utils: any
   flutter_bloc: ^9.1.1
   cupertino_icons: ^1.0.9
   flutter_dotenv: ^6.0.1
@@ -19,6 +20,7 @@ dependencies:
   geolocator: ^14.0.3
   geocoding: ^5.0.0
   shared_preferences: ^2.5.5
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
@@ -36,5 +38,8 @@ flutter:
     - assets/icons/sunset.png
     - assets/icons/moon.png
     - assets/icons/prayer_wallpaper.jpg
+
 flutter_intl:
   enabled: true
+  arb_dir: lib/utils/l10n        
+  output_dir: lib/utils/generated

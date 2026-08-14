@@ -4,7 +4,6 @@ import 'package:athan_app/utils/router/app_router.dart';
 import 'package:athan_app/utils/router/app_routes.dart';
 import 'package:athan_app/utils/theme/app_theme.dart';
 import 'package:athan_app/view_models/settings_cubit/settings_cubit.dart';
-import 'package:athan_app/views/pages/custom_bottom_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -31,7 +30,7 @@ class AthanApp extends StatelessWidget {
             themeMode: state.themeMode,
             theme: AppTheme.light,
             darkTheme: AppTheme.dark,
-            locale: Locale(state.languageCode.toString()),
+            locale: const Locale('ar'),
             localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,
@@ -41,7 +40,6 @@ class AthanApp extends StatelessWidget {
             supportedLocales: S.delegate.supportedLocales,
             initialRoute: AppRoutes.home,
             onGenerateRoute: AppRouter.generateRoute,
-            home: const CustomBottomNavbar(),
           );
         },
       ),

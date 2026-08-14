@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:athan_app/utils/generated/l10n.dart';
 import 'package:athan_app/utils/app_assets.dart';
 import 'package:athan_app/utils/helpers.dart';
 import 'package:athan_app/utils/router/app_router.dart';
@@ -58,6 +59,7 @@ class _PrayerPageState extends State<PrayerPage> {
     final prayerCubit = BlocProvider.of<PrayerTimeCubit>(context);
     final size = MediaQuery.of(context).size;
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final texts = S.of(context);
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
@@ -128,7 +130,7 @@ class _PrayerPageState extends State<PrayerPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Next Pray',
+                                  texts.nextPray,
                                   style: textTheme.titleLarge!.copyWith(
                                     color: AppColors.white,
                                   ),
@@ -182,7 +184,7 @@ class _PrayerPageState extends State<PrayerPage> {
                           const SizedBox(height: 16),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.fajrIcon),
-                            title: 'Fajr',
+                            title: texts.fajr,
                             prayerTime: prayerTimes.fajr ?? '--',
                           ),
                           const SizedBox(height: 8),
@@ -191,19 +193,19 @@ class _PrayerPageState extends State<PrayerPage> {
                               context,
                               AppAssets.sunriseIcon,
                             ),
-                            title: 'Sunrise',
+                            title: texts.Sunrise,
                             prayerTime: prayerTimes.sunrise ?? '--',
                           ),
                           const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.dhuhrIcon),
-                            title: 'Dhuhr',
+                            title: texts.dhuhr,
                             prayerTime: prayerTimes.dhuhr ?? '--',
                           ),
                           const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.asrIcon),
-                            title: 'Asr',
+                            title: texts.asr,
                             prayerTime: prayerTimes.asr ?? '--',
                           ),
                           const SizedBox(height: 8),
@@ -212,25 +214,25 @@ class _PrayerPageState extends State<PrayerPage> {
                               context,
                               AppAssets.maghribIcon,
                             ),
-                            title: 'Maghrib',
+                            title: texts.maghrib,
                             prayerTime: prayerTimes.maghrib ?? '--',
                           ),
                           const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.ishaIcon),
-                            title: 'Isha',
+                            title: texts.isha,
                             prayerTime: prayerTimes.isha ?? '--',
                           ),
                           const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.ishaIcon),
-                            title: 'Midnight',
+                            title: texts.midnight,
                             prayerTime: prayerTimes.midnight ?? '--',
                           ),
                           const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.ishaIcon),
-                            title: 'Last Third',
+                            title: texts.lastthird,
                             prayerTime: prayerTimes.lastThird ?? '--',
                           ),
                           const SizedBox(height: 8),

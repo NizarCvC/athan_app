@@ -23,7 +23,7 @@ class SettingsCubit extends Cubit<SettingsState> {
         await _localDatabaseServices.getString(
           AppLocalDatabaseTags.languageTag,
         ) ??
-        SupportedLanguage.en.toString();
+        SupportedLanguage.en.code;
     final is24TimeFormat =
         await _localDatabaseServices.getBool(
           AppLocalDatabaseTags.timeFormatTag,
@@ -46,24 +46,36 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   Future<void> toggleTheme(bool isDark) async {
-    await _localDatabaseServices.setBool(AppLocalDatabaseTags.themeModeTag, isDark);
+    await _localDatabaseServices.setBool(
+      AppLocalDatabaseTags.themeModeTag,
+      isDark,
+    );
     emit(state.copyWith(themeMode: isDark ? ThemeMode.dark : ThemeMode.light));
   }
 
   Future<void> changeLanguage(String langCode) async {
-    await _localDatabaseServices.setString(AppLocalDatabaseTags.languageTag, langCode);
+    await _localDatabaseServices.setString(
+      AppLocalDatabaseTags.languageTag,
+      langCode,
+    );
     emit(
       state.copyWith(languageCode: SupportedLanguage.values.byName(langCode)),
     );
   }
 
   Future<void> changeTimeFormat(bool is24TimeFormat) async {
-    await _localDatabaseServices.setBool(AppLocalDatabaseTags.timeFormatTag, is24TimeFormat);
+    await _localDatabaseServices.setBool(
+      AppLocalDatabaseTags.timeFormatTag,
+      is24TimeFormat,
+    );
     emit(state.copyWith(is24TimeFormat: is24TimeFormat));
   }
 
   Future<void> changeCalenderFormat(bool isGregorianFormat) async {
-    await _localDatabaseServices.setBool(AppLocalDatabaseTags.calenderFormatTag, isGregorianFormat);
+    await _localDatabaseServices.setBool(
+      AppLocalDatabaseTags.calenderFormatTag,
+      isGregorianFormat,
+    );
     emit(state.copyWith(isGregorianFormat: isGregorianFormat));
   }
 }

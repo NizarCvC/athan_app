@@ -53,13 +53,61 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Next Pray`
+  String get nextPray {
+    return Intl.message('Next Pray', name: 'nextPray', desc: '', args: []);
+  }
+
+  /// `Fajr`
+  String get fajr {
+    return Intl.message('Fajr', name: 'fajr', desc: '', args: []);
+  }
+
+  /// `Sunrise`
+  String get Sunrise {
+    return Intl.message('Sunrise', name: 'Sunrise', desc: '', args: []);
+  }
+
+  /// `Dhuhr`
+  String get dhuhr {
+    return Intl.message('Dhuhr', name: 'dhuhr', desc: '', args: []);
+  }
+
+  /// `Asr`
+  String get asr {
+    return Intl.message('Asr', name: 'asr', desc: '', args: []);
+  }
+
+  /// `Maghrib`
+  String get maghrib {
+    return Intl.message('Maghrib', name: 'maghrib', desc: '', args: []);
+  }
+
+  /// `Isha`
+  String get isha {
+    return Intl.message('Isha', name: 'isha', desc: '', args: []);
+  }
+
+  /// `Midnight`
+  String get midnight {
+    return Intl.message('Midnight', name: 'midnight', desc: '', args: []);
+  }
+
+  /// `Last Third`
+  String get lastthird {
+    return Intl.message('Last Third', name: 'lastthird', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   const AppLocalizationDelegate();
 
   List<Locale> get supportedLocales {
-    return const <Locale>[Locale.fromSubtags(languageCode: 'en')];
+    return const <Locale>[
+      Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ar'),
+    ];
   }
 
   @override
