@@ -37,7 +37,7 @@ flutter:
     - assets/icons/sun.png
     - assets/icons/sunset.png
     - assets/icons/moon.png
-    - assets/icons/prayer_wallpaper.jpg
+    - assets/images/prayer_wallpaper.jpg
 
 flutter_intl:
   enabled: true

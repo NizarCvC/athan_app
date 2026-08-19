@@ -30,7 +30,7 @@ class AthanApp extends StatelessWidget {
             themeMode: state.themeMode,
             theme: AppTheme.light,
             darkTheme: AppTheme.dark,
-            locale: const Locale('ar'),
+            locale: Locale(state.languageCode.code),
             localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,

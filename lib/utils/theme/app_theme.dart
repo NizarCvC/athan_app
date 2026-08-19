@@ -35,6 +35,7 @@ class AppTheme {
       backgroundColor: Colors.transparent,
       elevation: 0,
     ),
+    scaffoldBackgroundColor: AppColors.black,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primaryColor,

@@ -7,7 +7,7 @@ class SettingsState {
   final bool isGregorianFormat;
 
   SettingsState({
-    this.themeMode = ThemeMode.light,
+    this.themeMode = ThemeMode.dark,
     this.languageCode = SupportedLanguage.en,
     this.is24TimeFormat = true,
     this .isGregorianFormat = true

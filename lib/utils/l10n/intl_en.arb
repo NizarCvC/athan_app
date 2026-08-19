@@ -7,5 +7,19 @@
   "maghrib": "Maghrib",
   "isha": "Isha",
   "midnight": "Midnight",
-  "lastthird": "Last Third"
+  "lastthird": "Last Third",
+  "settings": "Settings",
+  "notifications": "Notifications",
+  "appTheme": "App Theme",
+  "location": "Location",
+  "calendarFormat": "Calendar Format",
+  "timeFormat": "Time Format",
+  "language": "Language",
+  "calculationMethod": "Calculation Method",
+  "juristicMethod": "Juristic Method",
+  "feedback": "Feedback",
+  "athanApp": "Athan App",
+  "version": "Version",
+  "english": "English",
+  "arabic": "Arabic"
 }

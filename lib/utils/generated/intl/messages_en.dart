@@ -23,13 +23,29 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "Sunrise": MessageLookupByLibrary.simpleMessage("Sunrise"),
+    "appTheme": MessageLookupByLibrary.simpleMessage("App Theme"),
+    "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "asr": MessageLookupByLibrary.simpleMessage("Asr"),
+    "athanApp": MessageLookupByLibrary.simpleMessage("Athan App"),
+    "calculationMethod": MessageLookupByLibrary.simpleMessage(
+      "Calculation Method",
+    ),
+    "calendarFormat": MessageLookupByLibrary.simpleMessage("Calendar Format"),
     "dhuhr": MessageLookupByLibrary.simpleMessage("Dhuhr"),
+    "english": MessageLookupByLibrary.simpleMessage("English"),
     "fajr": MessageLookupByLibrary.simpleMessage("Fajr"),
+    "feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
     "isha": MessageLookupByLibrary.simpleMessage("Isha"),
+    "juristicMethod": MessageLookupByLibrary.simpleMessage("Juristic Method"),
+    "language": MessageLookupByLibrary.simpleMessage("Language"),
     "lastthird": MessageLookupByLibrary.simpleMessage("Last Third"),
+    "location": MessageLookupByLibrary.simpleMessage("Location"),
     "maghrib": MessageLookupByLibrary.simpleMessage("Maghrib"),
     "midnight": MessageLookupByLibrary.simpleMessage("Midnight"),
     "nextPray": MessageLookupByLibrary.simpleMessage("Next Pray"),
+    "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "timeFormat": MessageLookupByLibrary.simpleMessage("Time Format"),
+    "version": MessageLookupByLibrary.simpleMessage("Version"),
   };
 }

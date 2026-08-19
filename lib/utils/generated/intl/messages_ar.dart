@@ -23,13 +23,27 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "Sunrise": MessageLookupByLibrary.simpleMessage("شروق الشمس"),
+    "appTheme": MessageLookupByLibrary.simpleMessage("مظهر التطبيق"),
+    "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "asr": MessageLookupByLibrary.simpleMessage("العصر"),
+    "athanApp": MessageLookupByLibrary.simpleMessage("تطبيق الأذان"),
+    "calculationMethod": MessageLookupByLibrary.simpleMessage("طريقة الحساب"),
+    "calendarFormat": MessageLookupByLibrary.simpleMessage("صيغة التقويم"),
     "dhuhr": MessageLookupByLibrary.simpleMessage("الظهر"),
+    "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
     "fajr": MessageLookupByLibrary.simpleMessage("الفجر"),
+    "feedback": MessageLookupByLibrary.simpleMessage("الملاحظات"),
     "isha": MessageLookupByLibrary.simpleMessage("العشاء"),
+    "juristicMethod": MessageLookupByLibrary.simpleMessage("المذهب الفقهي"),
+    "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "lastthird": MessageLookupByLibrary.simpleMessage("الثلث الأخير"),
+    "location": MessageLookupByLibrary.simpleMessage("الموقع"),
     "maghrib": MessageLookupByLibrary.simpleMessage("المغرب"),
     "midnight": MessageLookupByLibrary.simpleMessage("منتصف الليل"),
     "nextPray": MessageLookupByLibrary.simpleMessage("الصلاة التالية"),
+    "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+    "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+    "timeFormat": MessageLookupByLibrary.simpleMessage("صيغة الوقت"),
+    "version": MessageLookupByLibrary.simpleMessage("الإصدار"),
   };
 }

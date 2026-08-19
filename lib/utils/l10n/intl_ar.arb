@@ -7,5 +7,19 @@
   "maghrib": "المغرب",
   "isha": "العشاء",
   "midnight": "منتصف الليل",
-  "lastthird": "الثلث الأخير"
+  "lastthird": "الثلث الأخير",
+  "settings": "الإعدادات",
+  "notifications": "الإشعارات",
+  "appTheme": "مظهر التطبيق",
+  "location": "الموقع",
+  "calendarFormat": "صيغة التقويم",
+  "timeFormat": "صيغة الوقت",
+  "language": "اللغة",
+  "calculationMethod": "طريقة الحساب",
+  "juristicMethod": "المذهب الفقهي",
+  "feedback": "الملاحظات",
+  "athanApp": "تطبيق الأذان",
+  "version": "الإصدار",
+  "english": "الإنجليزية",
+  "arabic": "العربية"
 }

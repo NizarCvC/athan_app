@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -97,6 +98,96 @@ class S {
   /// `Last Third`
   String get lastthird {
     return Intl.message('Last Third', name: 'lastthird', desc: '', args: []);
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message('Settings', name: 'settings', desc: '', args: []);
+  }
+
+  /// `Notifications`
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App Theme`
+  String get appTheme {
+    return Intl.message('App Theme', name: 'appTheme', desc: '', args: []);
+  }
+
+  /// `Location`
+  String get location {
+    return Intl.message('Location', name: 'location', desc: '', args: []);
+  }
+
+  /// `Calendar Format`
+  String get calendarFormat {
+    return Intl.message(
+      'Calendar Format',
+      name: 'calendarFormat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time Format`
+  String get timeFormat {
+    return Intl.message('Time Format', name: 'timeFormat', desc: '', args: []);
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message('Language', name: 'language', desc: '', args: []);
+  }
+
+  /// `Calculation Method`
+  String get calculationMethod {
+    return Intl.message(
+      'Calculation Method',
+      name: 'calculationMethod',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Juristic Method`
+  String get juristicMethod {
+    return Intl.message(
+      'Juristic Method',
+      name: 'juristicMethod',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Feedback`
+  String get feedback {
+    return Intl.message('Feedback', name: 'feedback', desc: '', args: []);
+  }
+
+  /// `Athan App`
+  String get athanApp {
+    return Intl.message('Athan App', name: 'athanApp', desc: '', args: []);
+  }
+
+  /// `Version`
+  String get version {
+    return Intl.message('Version', name: 'version', desc: '', args: []);
+  }
+
+  /// `English`
+  String get english {
+    return Intl.message('English', name: 'english', desc: '', args: []);
+  }
+
+  /// `Arabic`
+  String get arabic {
+    return Intl.message('Arabic', name: 'arabic', desc: '', args: []);
   }
 }
 
