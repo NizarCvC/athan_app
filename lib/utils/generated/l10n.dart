@@ -189,6 +189,56 @@ class S {
   String get arabic {
     return Intl.message('Arabic', name: 'arabic', desc: '', args: []);
   }
+
+  /// `Prayer`
+  String get prayer {
+    return Intl.message('Prayer', name: 'prayer', desc: '', args: []);
+  }
+
+  /// `Fasting`
+  String get fasting {
+    return Intl.message('Fasting', name: 'fasting', desc: '', args: []);
+  }
+
+  /// `Zakat`
+  String get zakat {
+    return Intl.message('Zakat', name: 'zakat', desc: '', args: []);
+  }
+
+  /// `Duas`
+  String get duas {
+    return Intl.message('Duas', name: 'duas', desc: '', args: []);
+  }
+
+  /// `Gregorian`
+  String get gregorian {
+    return Intl.message('Gregorian', name: 'gregorian', desc: '', args: []);
+  }
+
+  /// `Hijri`
+  String get hijri {
+    return Intl.message('Hijri', name: 'hijri', desc: '', args: []);
+  }
+
+  /// `Hour Time 24-Hour`
+  String get hourTime24 {
+    return Intl.message(
+      'Hour Time 24-Hour',
+      name: 'hourTime24',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hour Time 12-Hour`
+  String get hourTime12 {
+    return Intl.message(
+      'Hour Time 12-Hour',
+      name: 'hourTime12',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

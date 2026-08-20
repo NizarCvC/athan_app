@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:athan_app/utils/generated/l10n.dart';
 import 'package:athan_app/utils/app_assets.dart';
 import 'package:athan_app/utils/helpers.dart';
+import 'package:athan_app/utils/helpers/translator.dart';
 import 'package:athan_app/utils/router/app_router.dart';
 import 'package:athan_app/utils/theme/app_colors.dart';
 import 'package:athan_app/view_models/prayer_time_cubit/prayer_time_cubit.dart';
@@ -60,6 +61,7 @@ class _PrayerPageState extends State<PrayerPage> {
     final size = MediaQuery.of(context).size;
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final texts = S.of(context);
+    final currentLocale = Localizations.localeOf(context);
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
@@ -136,7 +138,17 @@ class _PrayerPageState extends State<PrayerPage> {
                                   ),
                                 ),
                                 Text(
-                                  prayerCubit.getNextPrayerName(prayerTimes),
+                                  (currentLocale.languageCode == 'ar')
+                                      ? Translator.arabicPrayerNames[prayerCubit
+                                                .getNextPrayerName(
+                                                  prayerTimes,
+                                                )] ??
+                                            prayerCubit.getNextPrayerName(
+                                              prayerTimes,
+                                            )
+                                      : prayerCubit.getNextPrayerName(
+                                          prayerTimes,
+                                        ),
                                   style: textTheme.displayMedium!.copyWith(
                                     color: AppColors.white,
                                   ),
@@ -176,7 +188,7 @@ class _PrayerPageState extends State<PrayerPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '${date.gregorian?.year} ${date.gregorian?.month?.en} ${date.gregorian?.day}',
+                            '${date.gregorian?.year} ${(currentLocale.languageCode == 'ar') ? Translator.arabicGregorianMonthNames[date.gregorian?.month?.en] ?? date.gregorian?.month?.en : date.gregorian?.month?.en} ${date.gregorian?.day}',
                             style: textTheme.headlineSmall!.copyWith(
                               fontWeight: .w600,
                             ),

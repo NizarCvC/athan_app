@@ -1,3 +1,4 @@
+import 'package:athan_app/utils/generated/l10n.dart';
 import 'package:athan_app/utils/theme/app_colors.dart';
 import 'package:athan_app/view_models/dua_cubit/dua_cubit.dart';
 import 'package:athan_app/view_models/fasting_cubit/fasting_cubit.dart';
@@ -46,7 +47,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
         ),
         item: ItemConfig(
           icon: const Icon(Icons.mosque_outlined),
-          title: 'Prayer',
+          title: S.of(context).prayer,
           activeForegroundColor: activeColor,
         ),
       ),
@@ -57,7 +58,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
         ),
         item: ItemConfig(
           icon: const Icon(Icons.nights_stay_outlined),
-          title: 'Fasting',
+          title: S.of(context).fasting,
           activeForegroundColor: activeColor,
         ),
       ),
@@ -68,7 +69,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
         ),
         item: ItemConfig(
           icon: const Icon(Icons.monetization_on_outlined),
-          title: 'Zakat',
+          title: S.of(context).zakat,
           activeForegroundColor: activeColor,
         ),
       ),
@@ -82,7 +83,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
         ),
         item: ItemConfig(
           icon: const Icon(Icons.back_hand_outlined),
-          title: 'Dua',
+          title: S.of(context).duas,
           activeForegroundColor: activeColor,
         ),
       ),

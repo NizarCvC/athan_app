@@ -21,5 +21,13 @@
   "athanApp": "Athan App",
   "version": "Version",
   "english": "English",
-  "arabic": "Arabic"
+  "arabic": "Arabic",
+  "prayer": "Prayer",
+  "fasting": "Fasting",
+  "zakat": "Zakat",
+  "duas": "Duas",
+  "gregorian": "Gregorian",
+  "hijri": "Hijri",
+  "hourTime24": "Hour Time 24-Hour",
+  "hourTime12": "Hour Time 12-Hour"
 }

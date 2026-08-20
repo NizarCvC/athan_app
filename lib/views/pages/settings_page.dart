@@ -58,13 +58,67 @@ class SettingsPage extends StatelessWidget {
                     SettingWidget(
                       icon: Icons.calendar_month_rounded,
                       title: S.of(context).calendarFormat,
-                      onTap: () {},
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          backgroundColor: Theme.of(
+                            context,
+                          ).scaffoldBackgroundColor,
+                          builder: (_) {
+                            return SettingBottomSheet<bool>(
+                              settingInfo: SettingInfo(
+                                initialValue: cubit.state.isGregorianFormat,
+                                settingAction: (isGregFormat) {
+                                  cubit.changeCalenderFormat(isGregFormat!);
+                                },
+                                options: [
+                                  SettingOptions(
+                                    optionName: S.of(context).gregorian,
+                                    optionValue: true,
+                                  ),
+                                  SettingOptions(
+                                    optionName: S.of(context).hijri,
+                                    optionValue: false,
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      },
                     ),
                     const Divider(),
                     SettingWidget(
                       icon: Icons.access_time_rounded,
                       title: S.of(context).timeFormat,
-                      onTap: () {},
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          backgroundColor: Theme.of(
+                            context,
+                          ).scaffoldBackgroundColor,
+                          builder: (_) {
+                            return SettingBottomSheet<bool>(
+                              settingInfo: SettingInfo(
+                                initialValue: cubit.state.is24TimeFormat,
+                                settingAction: (is24TimeFormat) {
+                                  cubit.changeTimeFormat(is24TimeFormat!);
+                                },
+                                options: [
+                                  SettingOptions(
+                                    optionName: S.of(context).hourTime24,
+                                    optionValue: true,
+                                  ),
+                                  SettingOptions(
+                                    optionName: S.of(context).hourTime12,
+                                    optionValue: false,
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      },
                     ),
                     const Divider(),
                     SettingWidget(
