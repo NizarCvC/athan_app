@@ -6,4 +6,5 @@ class AppColors {
   static const Color black = Color.fromARGB(255, 20, 19, 28);
   static const Color white = Colors.white;
   static const Color red = Colors.red;
+  static const Color grey = Colors.grey;
 }

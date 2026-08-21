@@ -29,5 +29,17 @@
   "gregorian": "Gregorian",
   "hijri": "Hijri",
   "hourTime24": "Hour Time 24-Hour",
-  "hourTime12": "Hour Time 12-Hour"
+  "hourTime12": "Hour Time 12-Hour",
+  "muharram": "Muharram",
+  "safar": "Safar",
+  "rabiAlAwwal": "Rabi al-Awwal",
+  "rabiAlThani": "Rabi al-Thani",
+  "jumadaAlAwwal": "Jumada al-Awwal",
+  "jumadaAlThani": "Jumada al-Thani",
+  "rajab": "Rajab",
+  "shaban": "Shaban",
+  "ramadan": "Ramadan",
+  "shawwal": "Shawwal",
+  "dhuAlQidah": "Dhu al-Qidah",
+  "dhuAlHijjah": "Dhu al-Hijjah"
 }

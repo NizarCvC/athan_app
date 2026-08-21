@@ -239,6 +239,91 @@ class S {
       args: [],
     );
   }
+
+  /// `Muharram`
+  String get muharram {
+    return Intl.message('Muharram', name: 'muharram', desc: '', args: []);
+  }
+
+  /// `Safar`
+  String get safar {
+    return Intl.message('Safar', name: 'safar', desc: '', args: []);
+  }
+
+  /// `Rabi al-Awwal`
+  String get rabiAlAwwal {
+    return Intl.message(
+      'Rabi al-Awwal',
+      name: 'rabiAlAwwal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rabi al-Thani`
+  String get rabiAlThani {
+    return Intl.message(
+      'Rabi al-Thani',
+      name: 'rabiAlThani',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Jumada al-Awwal`
+  String get jumadaAlAwwal {
+    return Intl.message(
+      'Jumada al-Awwal',
+      name: 'jumadaAlAwwal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Jumada al-Thani`
+  String get jumadaAlThani {
+    return Intl.message(
+      'Jumada al-Thani',
+      name: 'jumadaAlThani',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rajab`
+  String get rajab {
+    return Intl.message('Rajab', name: 'rajab', desc: '', args: []);
+  }
+
+  /// `Shaban`
+  String get shaban {
+    return Intl.message('Shaban', name: 'shaban', desc: '', args: []);
+  }
+
+  /// `Ramadan`
+  String get ramadan {
+    return Intl.message('Ramadan', name: 'ramadan', desc: '', args: []);
+  }
+
+  /// `Shawwal`
+  String get shawwal {
+    return Intl.message('Shawwal', name: 'shawwal', desc: '', args: []);
+  }
+
+  /// `Dhu al-Qidah`
+  String get dhuAlQidah {
+    return Intl.message('Dhu al-Qidah', name: 'dhuAlQidah', desc: '', args: []);
+  }
+
+  /// `Dhu al-Hijjah`
+  String get dhuAlHijjah {
+    return Intl.message(
+      'Dhu al-Hijjah',
+      name: 'dhuAlHijjah',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

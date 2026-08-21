@@ -60,7 +60,7 @@ class _PrayerPageState extends State<PrayerPage> {
     final prayerCubit = BlocProvider.of<PrayerTimeCubit>(context);
     final size = MediaQuery.of(context).size;
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final texts = S.of(context);
+    final words = S.of(context);
     final currentLocale = Localizations.localeOf(context);
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
@@ -132,7 +132,7 @@ class _PrayerPageState extends State<PrayerPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  texts.nextPray,
+                                  words.nextPray,
                                   style: textTheme.titleLarge!.copyWith(
                                     color: AppColors.white,
                                   ),
@@ -193,10 +193,17 @@ class _PrayerPageState extends State<PrayerPage> {
                               fontWeight: .w600,
                             ),
                           ),
+                          Text(
+                            '${date.hijri?.year} ${(currentLocale.languageCode == 'ar') ? Translator.arabicHijriMonthNames[date.hijri?.month?.en] ?? date.hijri?.month?.en : date.hijri?.month?.en} ${date.hijri?.day}',
+                            style: textTheme.titleMedium!.copyWith(
+                              fontWeight: .w600,
+                              color: AppColors.grey,
+                            ),
+                          ),
                           const SizedBox(height: 16),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.fajrIcon),
-                            title: texts.fajr,
+                            title: words.fajr,
                             prayerTime: prayerTimes.fajr ?? '--',
                           ),
                           const SizedBox(height: 8),
@@ -205,19 +212,19 @@ class _PrayerPageState extends State<PrayerPage> {
                               context,
                               AppAssets.sunriseIcon,
                             ),
-                            title: texts.Sunrise,
+                            title: words.Sunrise,
                             prayerTime: prayerTimes.sunrise ?? '--',
                           ),
                           const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.dhuhrIcon),
-                            title: texts.dhuhr,
+                            title: words.dhuhr,
                             prayerTime: prayerTimes.dhuhr ?? '--',
                           ),
                           const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.asrIcon),
-                            title: texts.asr,
+                            title: words.asr,
                             prayerTime: prayerTimes.asr ?? '--',
                           ),
                           const SizedBox(height: 8),
@@ -226,25 +233,25 @@ class _PrayerPageState extends State<PrayerPage> {
                               context,
                               AppAssets.maghribIcon,
                             ),
-                            title: texts.maghrib,
+                            title: words.maghrib,
                             prayerTime: prayerTimes.maghrib ?? '--',
                           ),
                           const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.ishaIcon),
-                            title: texts.isha,
+                            title: words.isha,
                             prayerTime: prayerTimes.isha ?? '--',
                           ),
                           const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.ishaIcon),
-                            title: texts.midnight,
+                            title: words.midnight,
                             prayerTime: prayerTimes.midnight ?? '--',
                           ),
                           const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.ishaIcon),
-                            title: texts.lastthird,
+                            title: words.lastthird,
                             prayerTime: prayerTimes.lastThird ?? '--',
                           ),
                           const SizedBox(height: 8),

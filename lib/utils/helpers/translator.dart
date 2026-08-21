@@ -23,4 +23,18 @@ class Translator {
     'November': 'نوفمبر',
     'December': 'ديسمبر',
   };
+  static const Map<String, String> arabicHijriMonthNames = {
+    'Muharram': 'محرم',
+    'Safar': 'صفر',
+    'Rabi al-Awwal': 'ربيع الأول',
+    'Rabi al-Thani': 'ربيع الثاني',
+    'Jumada al-Awwal': 'جمادى الأولى',
+    'Jumada al-Thani': 'جمادى الثانية',
+    'Rajab': 'رجب',
+    'Shaban': 'شعبان',
+    'Ramadan': 'رمضان',
+    'Shawwal': 'شوال',
+    'Dhu al-Qidah': 'ذو القعدة',
+    'Dhu al-Hijjah': 'ذو الحجة',
+  };
 }

@@ -6,6 +6,7 @@ import 'package:athan_app/view_models/prayer_time_cubit/prayer_time_cubit.dart';
 import 'package:athan_app/view_models/ruqyah_cubit/ruqyah_cubit.dart';
 import 'package:athan_app/view_models/settings_cubit/settings_cubit.dart';
 import 'package:athan_app/view_models/zakat_nisab_cubit/zakat_nisab_cubit.dart';
+import 'package:athan_app/views/pages/fasting_page.dart';
 import 'package:athan_app/views/pages/prayer_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,7 +55,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
       PersistentTabConfig(
         screen: BlocProvider(
           create: (context) => FastingCubit(),
-          child: const Scaffold(),
+          child: const FastingPage(),
         ),
         item: ItemConfig(
           icon: const Icon(Icons.nights_stay_outlined),

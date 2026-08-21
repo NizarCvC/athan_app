@@ -29,5 +29,17 @@
   "gregorian": "الميلادي",
   "hijri": "الهجري",
   "hourTime24": "صيغة 24 ساعة",
-  "hourTime12": "صيغة 12 ساعة"
+  "hourTime12": "صيغة 12 ساعة",
+  "muharram": "محرم",
+  "safar": "صفر",
+  "rabiAlAwwal": "ربيع الأول",
+  "rabiAlThani": "ربيع الثاني",
+  "jumadaAlAwwal": "جمادى الأولى",
+  "jumadaAlThani": "جمادى الثانية",
+  "rajab": "رجب",
+  "shaban": "شعبان",
+  "ramadan": "رمضان",
+  "shawwal": "شوال",
+  "dhuAlQidah": "ذو القعدة",
+  "dhuAlHijjah": "ذو الحجة"
 }
