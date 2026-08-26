@@ -7,6 +7,7 @@ import 'package:athan_app/utils/router/app_router.dart';
 import 'package:athan_app/utils/theme/app_colors.dart';
 import 'package:athan_app/view_models/prayer_time_cubit/prayer_time_cubit.dart';
 import 'package:athan_app/views/widgets/prayer_time_widgets/bounce_top_clamp_bottom_physics.dart';
+import 'package:athan_app/views/widgets/prayer_time_widgets/calender_widget.dart';
 import 'package:athan_app/views/widgets/prayer_time_widgets/next_prayer_time_counter.dart';
 import 'package:athan_app/views/widgets/prayer_time_widgets/prayer_time_widget.dart';
 import 'package:flutter/material.dart';
@@ -23,11 +24,7 @@ class PrayerPage extends StatefulWidget {
 class _PrayerPageState extends State<PrayerPage> {
   Widget _buildImageIcon(BuildContext context, String assetPath) {
     final size = MediaQuery.of(context).size;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    return Opacity(
-      opacity: isDark ? 0.8 : 1.0,
-      child: Image.asset(assetPath, height: size.height * 0.05),
-    );
+    return Image.asset(assetPath, height: size.height * 0.05);
   }
 
   Widget _buildCustomIconButton({
@@ -37,17 +34,20 @@ class _PrayerPageState extends State<PrayerPage> {
   }) {
     final size = MediaQuery.of(context).size;
     final isDark = Theme.of(context).brightness == Brightness.dark;
-
     return ClipOval(
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
         child: Container(
           color: isDark
               ? Colors.white.withValues(alpha: 0.1)
-              : AppColors.white.withValues(alpha: 0.2),
+              : AppColors.white1.withValues(alpha: 0.2),
           child: IconButton(
             onPressed: onPressed,
-            icon: Icon(icon, size: size.height * 0.035, color: AppColors.white),
+            icon: Icon(
+              icon,
+              size: size.height * 0.035,
+              color: AppColors.white1,
+            ),
           ),
         ),
       ),
@@ -131,10 +131,26 @@ class _PrayerPageState extends State<PrayerPage> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  words.nextPray,
-                                  style: textTheme.titleLarge!.copyWith(
-                                    color: AppColors.white,
+                                Container(
+                                  padding: const EdgeInsets.only(
+                                    left: 12.0,
+                                    right: 12.0,
+                                    bottom: 8.0,
+                                    top: 8.0,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(24),
+                                    color: isDark
+                                        ? Colors.white.withValues(alpha: 0.1)
+                                        : AppColors.white1.withValues(
+                                            alpha: 0.2,
+                                          ),
+                                  ),
+                                  child: Text(
+                                    words.nextPray,
+                                    style: textTheme.titleMedium!.copyWith(
+                                      color: AppColors.white1,
+                                    ),
                                   ),
                                 ),
                                 Text(
@@ -150,13 +166,13 @@ class _PrayerPageState extends State<PrayerPage> {
                                           prayerTimes,
                                         ),
                                   style: textTheme.displayMedium!.copyWith(
-                                    color: AppColors.white,
+                                    color: AppColors.white1,
                                   ),
                                 ),
                                 Text(
                                   nextPrayerTime,
                                   style: textTheme.displayMedium!.copyWith(
-                                    color: AppColors.white,
+                                    color: AppColors.white1,
                                   ),
                                 ),
                                 NextPrayerTimeCounter(
@@ -174,7 +190,7 @@ class _PrayerPageState extends State<PrayerPage> {
                   SliverToBoxAdapter(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: isDark ? AppColors.black : AppColors.white,
+                        color: isDark ? AppColors.black : AppColors.white2,
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(24.0),
                           topRight: Radius.circular(24.0),
@@ -186,27 +202,15 @@ class _PrayerPageState extends State<PrayerPage> {
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: size.height * 0.01,
                         children: [
-                          Text(
-                            '${date.gregorian?.year} ${(currentLocale.languageCode == 'ar') ? Translator.arabicGregorianMonthNames[date.gregorian?.month?.en] ?? date.gregorian?.month?.en : date.gregorian?.month?.en} ${date.gregorian?.day}',
-                            style: textTheme.headlineSmall!.copyWith(
-                              fontWeight: .w600,
-                            ),
-                          ),
-                          Text(
-                            '${date.hijri?.year} ${(currentLocale.languageCode == 'ar') ? Translator.arabicHijriMonthNames[date.hijri?.month?.en] ?? date.hijri?.month?.en : date.hijri?.month?.en} ${date.hijri?.day}',
-                            style: textTheme.titleMedium!.copyWith(
-                              fontWeight: .w600,
-                              color: AppColors.grey,
-                            ),
-                          ),
-                          const SizedBox(height: 16),
+                          CalenderWidget(date: date),
+                          SizedBox(height: size.height * 0.01),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.fajrIcon),
                             title: words.fajr,
                             prayerTime: prayerTimes.fajr ?? '--',
                           ),
-                          const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(
                               context,
@@ -215,19 +219,16 @@ class _PrayerPageState extends State<PrayerPage> {
                             title: words.Sunrise,
                             prayerTime: prayerTimes.sunrise ?? '--',
                           ),
-                          const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.dhuhrIcon),
                             title: words.dhuhr,
                             prayerTime: prayerTimes.dhuhr ?? '--',
                           ),
-                          const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.asrIcon),
                             title: words.asr,
                             prayerTime: prayerTimes.asr ?? '--',
                           ),
-                          const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(
                               context,
@@ -236,25 +237,21 @@ class _PrayerPageState extends State<PrayerPage> {
                             title: words.maghrib,
                             prayerTime: prayerTimes.maghrib ?? '--',
                           ),
-                          const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.ishaIcon),
                             title: words.isha,
                             prayerTime: prayerTimes.isha ?? '--',
                           ),
-                          const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.ishaIcon),
                             title: words.midnight,
                             prayerTime: prayerTimes.midnight ?? '--',
                           ),
-                          const SizedBox(height: 8),
                           PrayerTimeWidget(
                             icon: _buildImageIcon(context, AppAssets.ishaIcon),
                             title: words.lastthird,
                             prayerTime: prayerTimes.lastThird ?? '--',
                           ),
-                          const SizedBox(height: 8),
                         ],
                       ),
                     ),

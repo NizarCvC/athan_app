@@ -28,7 +28,7 @@ class SettingWidget extends StatelessWidget {
           icon,
           color: cubit.state.themeMode == ThemeMode.light
               ? AppColors.black
-              : AppColors.white,
+              : AppColors.white1,
         ),
         title: Text(
           title,

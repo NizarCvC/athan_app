@@ -35,10 +35,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
   }
 
   List<PersistentTabConfig> _buildTabs(BuildContext context) {
-    final settingsCubit = BlocProvider.of<SettingsCubit>(context);
-    final activeColor = settingsCubit.state.themeMode == ThemeMode.light
-        ? AppColors.black
-        : AppColors.white;
+    const activeColor = AppColors.primaryColor;
     return [
       PersistentTabConfig(
         screen: BlocProvider(
@@ -102,7 +99,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
           navBarConfig: navbarConfig,
           navBarDecoration: NavBarDecoration(
             color: settingsCubit.state.themeMode == ThemeMode.light
-                ? AppColors.white
+                ? AppColors.white1
                 : AppColors.black,
           ),
         ),

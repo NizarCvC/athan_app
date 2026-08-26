@@ -69,7 +69,7 @@ class _NextPrayerTimeCounterState extends State<NextPrayerTimeCounter> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(
       context,
-    ).textTheme.headlineSmall!.copyWith(color: AppColors.white);
+    ).textTheme.headlineSmall!.copyWith(color: AppColors.white1);
     final hours = Helpers.formatNumber(_remainingTime.inHours);
     final minutes = Helpers.formatNumber(
       _remainingTime.inMinutes.remainder(60),
