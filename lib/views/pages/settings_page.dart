@@ -40,7 +40,7 @@ class SettingsPage extends StatelessWidget {
                       title: S.of(context).appTheme,
                       onTap: () {},
                       trailing: Switch(
-                        value: cubit.state.themeMode == ThemeMode.dark
+                        value: cubit.state.themeMode == ThemeMode.light
                             ? true
                             : false,
                         onChanged: (bool newValue) {

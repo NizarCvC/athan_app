@@ -45,12 +45,12 @@ class SettingsCubit extends Cubit<SettingsState> {
     );
   }
 
-  Future<void> toggleTheme(bool isDark) async {
+  Future<void> toggleTheme(bool isLight) async {
     await _localDatabaseServices.setBool(
       AppLocalDatabaseTags.themeModeTag,
-      isDark,
+      isLight,
     );
-    emit(state.copyWith(themeMode: isDark ? ThemeMode.dark : ThemeMode.light));
+    emit(state.copyWith(themeMode: isLight ? ThemeMode.light : ThemeMode.dark));
   }
 
   Future<void> changeLanguage(String langCode) async {
