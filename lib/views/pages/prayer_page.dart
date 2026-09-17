@@ -10,6 +10,7 @@ import 'package:athan_app/views/widgets/prayer_time_widgets/bounce_top_clamp_bot
 import 'package:athan_app/views/widgets/prayer_time_widgets/calender_widget.dart';
 import 'package:athan_app/views/widgets/prayer_time_widgets/next_prayer_time_counter.dart';
 import 'package:athan_app/views/widgets/prayer_time_widgets/prayer_time_widget.dart';
+import 'package:athan_app/views/widgets/shared_widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -69,7 +70,7 @@ class _PrayerPageState extends State<PrayerPage> {
       builder: (context, state) {
         if (state is FetchingTodayPrayerTimes) {
           return const Scaffold(
-            body: Center(child: CircularProgressIndicator.adaptive()),
+            body: LoadingWidget(),
           );
         } else if (state is FetchedTodayPrayerTimes) {
           final data = state.todayPrayerTimes!;

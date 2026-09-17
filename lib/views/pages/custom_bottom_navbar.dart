@@ -51,7 +51,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
       ),
       PersistentTabConfig(
         screen: BlocProvider(
-          create: (context) => FastingCubit(),
+          create: (context) => FastingCubit()..fetchFastingInfo('Medina'),
           child: const FastingPage(),
         ),
         item: ItemConfig(

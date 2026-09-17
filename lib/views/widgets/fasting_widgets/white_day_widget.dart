@@ -27,7 +27,7 @@ class WhiteDayWidget extends StatelessWidget {
             height: size.width * 0.14,
             width: size.width * 0.14,
             decoration: BoxDecoration(
-              color: AppColors.translucentGreen,
+              color: AppColors.translucentGreen.withValues(alpha: 0.3),
               borderRadius: BorderRadius.circular(16.0),
               border: Border.all(
                 color: AppColors.primaryColor.withValues(alpha: 0.3),
@@ -39,7 +39,7 @@ class WhiteDayWidget extends StatelessWidget {
               children: [
                 Text(
                   dayNumber,
-                  style: textTheme.headlineSmall!.copyWith(
+                  style: textTheme.titleLarge!.copyWith(
                     fontWeight: .w900,
                     color: AppColors.primaryColor,
                   ),

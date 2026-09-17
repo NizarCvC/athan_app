@@ -1,9 +1,12 @@
+import 'package:athan_app/models/fasting_models/fasting_day.dart';
 import 'package:athan_app/utils/theme/app_colors.dart';
 import 'package:athan_app/views/widgets/fasting_widgets/glass_container.dart';
 import 'package:flutter/material.dart';
 
 class TodayFastingWidget extends StatelessWidget {
-  const TodayFastingWidget({super.key});
+  final FastingDay fastingDay;
+
+  const TodayFastingWidget({super.key, required this.fastingDay});
 
   Widget _buildTimeWithTitle({
     required BuildContext context,
@@ -54,10 +57,10 @@ class TodayFastingWidget extends StatelessWidget {
           crossAxisAlignment: .start,
           children: [
             Row(
+              mainAxisSize: .min,
               children: [
                 Container(
-                  height: size.height * 0.05,
-                  width: size.width * 0.5,
+                  padding: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24.0),
                     color: Colors.black12,
@@ -68,7 +71,7 @@ class TodayFastingWidget extends StatelessWidget {
                       const Icon(Icons.calendar_month, color: AppColors.yellow),
                       SizedBox(width: size.width * 0.02),
                       Text(
-                        '29 ramadan 1448',
+                        fastingDay.hijriReadable ?? '',
                         style: textTheme.titleMedium!.copyWith(
                           color: AppColors.white1,
                         ),
@@ -98,19 +101,18 @@ class TodayFastingWidget extends StatelessWidget {
                           context: context,
                           title: 'Suhoor',
                           icon: Icons.nightlight,
-                          time: '4:04 AM',
+                          time: fastingDay.time?.sahur ?? '',
                         ),
-                        Expanded(
-                          child: VerticalDivider(
-                            radius: BorderRadius.circular(24.0),
-                            color: AppColors.white1.withAlpha(100),
-                          ),
+                        VerticalDivider(
+                          radius: BorderRadius.circular(24.0),
+                          color: AppColors.white1.withAlpha(100),
+                          width: size.width * 0.25,
                         ),
                         _buildTimeWithTitle(
                           context: context,
                           title: 'Iftar',
                           icon: Icons.sunny,
-                          time: '6:53 PM',
+                          time: fastingDay.time?.iftar ?? '',
                         ),
                       ],
                     ),
@@ -125,7 +127,7 @@ class TodayFastingWidget extends StatelessWidget {
                 const Icon(Icons.timer_sharp, color: AppColors.yellow),
                 SizedBox(width: size.width * 0.015),
                 Text(
-                  'Total Duration: 14 hours 49 minutes',
+                  'Total Duration: ${fastingDay.time?.duration ?? ''}',
                   style: textTheme.titleMedium!.copyWith(
                     color: AppColors.white1,
                   ),
