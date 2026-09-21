@@ -1,4 +1,7 @@
 import 'package:athan_app/models/enums/supported_language.dart';
+import 'package:athan_app/models/zakat_nisab_models/supported_currency.dart';
+import 'package:athan_app/models/zakat_nisab_models/zakat_standard.dart';
+import 'package:athan_app/models/zakat_nisab_models/zakat_unit.dart';
 import 'package:athan_app/services/local_database_services.dart';
 import 'package:athan_app/utils/app_local_database_tags.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'settings_state.dart';
 
+// TODO: need to add functionality for others
 class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit() : super(SettingsState()) {
     _loadSettings();

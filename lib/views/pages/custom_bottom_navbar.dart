@@ -37,11 +37,12 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
 
   List<PersistentTabConfig> _buildTabs(BuildContext context) {
     const activeColor = AppColors.primaryColor;
+    final settingsCubit = BlocProvider.of<SettingsCubit>(context);
     return [
       PersistentTabConfig(
         screen: BlocProvider(
           create: (context) =>
-              PrayerTimeCubit()..fetchTodayPrayerTimes('Medina'),
+              PrayerTimeCubit(settingsCubit: settingsCubit)..fetchTodayPrayerTimes(),
           child: const PrayerPage(),
         ),
         item: ItemConfig(
@@ -52,7 +53,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
       ),
       PersistentTabConfig(
         screen: BlocProvider(
-          create: (context) => FastingCubit()..fetchFastingInfo('Medina'),
+          create: (context) => FastingCubit(settingsCubit: settingsCubit)..fetchFastingInfo(),
           child: const FastingPage(),
         ),
         item: ItemConfig(
@@ -63,7 +64,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
       ),
       PersistentTabConfig(
         screen: BlocProvider(
-          create: (context) => ZakatNisabCubit(),
+          create: (context) => ZakatNisabCubit(settingsCubit: settingsCubit)..fetchZakatNisabInfo(),
           child: const ZakatNisabPage(),
         ),
         item: ItemConfig(

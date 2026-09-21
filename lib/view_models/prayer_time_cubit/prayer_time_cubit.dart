@@ -4,6 +4,7 @@ import 'package:athan_app/models/prayer_time_models/single_day_data.dart';
 import 'package:athan_app/services/prayer_time_services.dart';
 import 'package:athan_app/utils/app_constants.dart';
 import 'package:athan_app/utils/helpers.dart';
+import 'package:athan_app/view_models/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
@@ -11,9 +12,12 @@ import 'package:geocoding/geocoding.dart';
 part 'prayer_time_state.dart';
 
 class PrayerTimeCubit extends Cubit<PrayerTimeState> {
-  PrayerTimeCubit() : super(PrayerTimeInitial());
+  PrayerTimeCubit({required SettingsCubit settingsCubit})
+    : _settingsCubit = settingsCubit,
+      super(PrayerTimeInitial());
 
   final _prayerTimeServices = PrayerTimeServices();
+  final SettingsCubit _settingsCubit;
 
   Future<Location?> _getGeocodingByCityName(String cityName) async {
     final geocoding = Geocoding();
@@ -21,14 +25,18 @@ class PrayerTimeCubit extends Cubit<PrayerTimeState> {
     return locations.isEmpty ? null : locations.first;
   }
 
-  Future<void> fetchTodayPrayerTimes(String cityName) async {
+  Future<void> fetchTodayPrayerTimes() async {
     emit(FetchingTodayPrayerTimes());
 
     try {
-      final location = await _getGeocodingByCityName(cityName);
+      final location = await _getGeocodingByCityName(_settingsCubit.state.cityName);
 
       if (location == null) {
-        emit(FetchingTodayPrayerTimesFailed('There is no city with this name: $cityName.'));
+        emit(
+          FetchingTodayPrayerTimesFailed(
+            'There is no city with this name: ${_settingsCubit.state.cityName}.',
+          ),
+        );
         return;
       }
       final queryParams = PrayerTimeParams(
@@ -36,14 +44,13 @@ class PrayerTimeCubit extends Cubit<PrayerTimeState> {
         lat: location.latitude,
         lon: location.longitude,
       );
-      final prayerTimes = await _prayerTimeServices.getDayPrayerTime(
+      final prayersInfo = await _prayerTimeServices.getDayPrayerTime(
         queryParams,
       );
 
-      if (prayerTimes.data != null) {
-        emit(FetchedTodayPrayerTimes(todayPrayerTimes: prayerTimes.data!));
-      }
-      else {
+      if (prayersInfo.data != null) {
+        emit(FetchedTodayPrayerTimes(todayPrayerTimes: prayersInfo.data!));
+      } else {
         emit(FetchingTodayPrayerTimesFailed('There is no prayer data.'));
       }
     } catch (e) {

@@ -32,7 +32,7 @@ class _FastingPageState extends State<FastingPage> {
             current is FetchingFastingInfoFailed,
         builder: (context, state) {
           if (state is FetchingFastingInfo) {
-            return const Scaffold(body: LoadingWidget());
+            return const Scaffold(body: Center(child: LoadingWidget()));
           } else if (state is FetchedFastingInfo) {
             final fastingInfo = state.fastingData;
             return Scaffold(

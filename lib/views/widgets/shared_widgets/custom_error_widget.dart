@@ -1,9 +1,9 @@
 import 'package:athan_app/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class ErrorWidget extends StatelessWidget {
+class CustomErrorWidget extends StatelessWidget {
   final String errorMessage;
-  const ErrorWidget({super.key, required this.errorMessage});
+  const CustomErrorWidget({super.key, required this.errorMessage});
 
   @override
   Widget build(BuildContext context) {

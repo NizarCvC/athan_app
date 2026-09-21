@@ -70,7 +70,7 @@ class _PrayerPageState extends State<PrayerPage> {
       builder: (context, state) {
         if (state is FetchingTodayPrayerTimes) {
           return const Scaffold(
-            body: LoadingWidget(),
+            body: Center(child: LoadingWidget()),
           );
         } else if (state is FetchedTodayPrayerTimes) {
           final data = state.todayPrayerTimes;
