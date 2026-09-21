@@ -5,6 +5,7 @@ class AppTheme {
   static ThemeData get light => ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
+    scaffoldBackgroundColor: AppColors.white2,
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.primaryColor,
       brightness: Brightness.light,
@@ -13,6 +14,7 @@ class AppTheme {
       centerTitle: true,
       foregroundColor: Colors.black,
       elevation: 0,
+      backgroundColor: AppColors.white2,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(

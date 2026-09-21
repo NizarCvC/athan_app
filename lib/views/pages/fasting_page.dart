@@ -34,7 +34,7 @@ class _FastingPageState extends State<FastingPage> {
           if (state is FetchingFastingInfo) {
             return const Scaffold(body: LoadingWidget());
           } else if (state is FetchedFastingInfo) {
-            final fastingInfo = state.fastingData!;
+            final fastingInfo = state.fastingData;
             return Scaffold(
               body: SafeArea(
                 child: SingleChildScrollView(
@@ -56,7 +56,20 @@ class _FastingPageState extends State<FastingPage> {
                           ),
                         ),
                         SizedBox(height: size.height * 0.03),
-                        TodayFastingWidget(fastingDay: fastingInfo.fasting![0]),
+                        TweenAnimationBuilder(
+                          tween: Tween<double>(begin: 0, end: 1),
+                          duration: const Duration(milliseconds: 800),
+                          curve: Curves.easeOutCubic,
+                          builder: (context, double value, child) {
+                            return Transform.translate(
+                              offset: Offset(0, 30 * (1 - value)),
+                              child: Opacity(opacity: value, child: child),
+                            );
+                          },
+                          child: TodayFastingWidget(
+                            fastingDay: fastingInfo.fasting![0],
+                          ),
+                        ),
                         SizedBox(height: size.height * 0.03),
                         Row(
                           children: [
@@ -67,7 +80,7 @@ class _FastingPageState extends State<FastingPage> {
                                 color: AppColors.translucentGreen,
                               ),
                               child: const Icon(
-                                Icons.star_border,
+                                Icons.auto_awesome_rounded,
                                 color: AppColors.primaryColor,
                               ),
                             ),

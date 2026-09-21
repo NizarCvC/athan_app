@@ -7,7 +7,7 @@ final class FastingInitial extends FastingState {}
 final class FetchingFastingInfo extends FastingState {}
 
 final class FetchedFastingInfo extends FastingState {
-  final FastingData? fastingData;
+  final FastingData fastingData;
 
   FetchedFastingInfo({required this.fastingData});
 }

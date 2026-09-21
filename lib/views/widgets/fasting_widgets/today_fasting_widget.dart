@@ -1,6 +1,7 @@
 import 'package:athan_app/models/fasting_models/fasting_day.dart';
 import 'package:athan_app/utils/theme/app_colors.dart';
 import 'package:athan_app/views/widgets/fasting_widgets/glass_container.dart';
+import 'package:athan_app/views/widgets/shared_widgets/custom_vertical_divider.dart';
 import 'package:flutter/material.dart';
 
 class TodayFastingWidget extends StatelessWidget {
@@ -100,13 +101,12 @@ class TodayFastingWidget extends StatelessWidget {
                         _buildTimeWithTitle(
                           context: context,
                           title: 'Suhoor',
-                          icon: Icons.nightlight,
+                          icon: Icons.nightlight_round,
                           time: fastingDay.time?.sahur ?? '',
                         ),
-                        VerticalDivider(
-                          radius: BorderRadius.circular(24.0),
-                          color: AppColors.white1.withAlpha(100),
-                          width: size.width * 0.25,
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 35.0),
+                          child: CustomVerticalDivider(),
                         ),
                         _buildTimeWithTitle(
                           context: context,
@@ -124,7 +124,10 @@ class TodayFastingWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: .center,
               children: [
-                const Icon(Icons.timer_sharp, color: AppColors.yellow),
+                const Icon(
+                  Icons.hourglass_empty_rounded,
+                  color: AppColors.yellow,
+                ),
                 SizedBox(width: size.width * 0.015),
                 Text(
                   'Total Duration: ${fastingDay.time?.duration ?? ''}',

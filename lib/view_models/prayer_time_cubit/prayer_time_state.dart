@@ -7,7 +7,7 @@ final class PrayerTimeInitial extends PrayerTimeState {}
 final class FetchingTodayPrayerTimes extends PrayerTimeState {}
 
 final class FetchedTodayPrayerTimes extends PrayerTimeState {
-  final SingleDayData? todayPrayerTimes;
+  final SingleDayData todayPrayerTimes;
 
   FetchedTodayPrayerTimes({required this.todayPrayerTimes});
 }

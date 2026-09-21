@@ -73,7 +73,7 @@ class _PrayerPageState extends State<PrayerPage> {
             body: LoadingWidget(),
           );
         } else if (state is FetchedTodayPrayerTimes) {
-          final data = state.todayPrayerTimes!;
+          final data = state.todayPrayerTimes;
           final date = data.date!;
           final prayerTimes = data.times!;
           final nextPrayerTime = prayerCubit.getNextPrayerTime(prayerTimes);

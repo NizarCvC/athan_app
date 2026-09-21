@@ -25,7 +25,7 @@ class FastingCubit extends Cubit<FastingState> {
       final location = await _getGeocodingByCityName(cityName);
 
       if (location == null) {
-        emit(FetchedFastingInfo(fastingData: null));
+        emit(FetchingFastingInfoFailed('There is no city with this name: $cityName.'));
         return;
       }
       final queryParams = FastingParams(
@@ -36,7 +36,12 @@ class FastingCubit extends Cubit<FastingState> {
 
       final fastingInfo = await _fastingServices.getFastingTime(queryParams);
 
-      emit(FetchedFastingInfo(fastingData: fastingInfo.data));
+      if (fastingInfo.data != null) {
+        emit(FetchedFastingInfo(fastingData: fastingInfo.data!));
+      }
+      else {
+        emit(FetchingFastingInfoFailed('There is no fasting data.'));
+      }
     } catch (e) {
       emit(FetchingFastingInfoFailed(e.toString()));
     }

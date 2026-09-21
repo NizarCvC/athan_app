@@ -28,7 +28,7 @@ class PrayerTimeCubit extends Cubit<PrayerTimeState> {
       final location = await _getGeocodingByCityName(cityName);
 
       if (location == null) {
-        emit(FetchedTodayPrayerTimes(todayPrayerTimes: null));
+        emit(FetchingTodayPrayerTimesFailed('There is no city with this name: $cityName.'));
         return;
       }
       final queryParams = PrayerTimeParams(
@@ -40,7 +40,12 @@ class PrayerTimeCubit extends Cubit<PrayerTimeState> {
         queryParams,
       );
 
-      emit(FetchedTodayPrayerTimes(todayPrayerTimes: prayerTimes.data));
+      if (prayerTimes.data != null) {
+        emit(FetchedTodayPrayerTimes(todayPrayerTimes: prayerTimes.data!));
+      }
+      else {
+        emit(FetchingTodayPrayerTimesFailed('There is no prayer data.'));
+      }
     } catch (e) {
       emit(FetchingTodayPrayerTimesFailed(e.toString()));
     }

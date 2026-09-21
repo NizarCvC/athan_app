@@ -8,6 +8,7 @@ import 'package:athan_app/view_models/settings_cubit/settings_cubit.dart';
 import 'package:athan_app/view_models/zakat_nisab_cubit/zakat_nisab_cubit.dart';
 import 'package:athan_app/views/pages/fasting_page.dart';
 import 'package:athan_app/views/pages/prayer_page.dart';
+import 'package:athan_app/views/pages/zakat_nisab_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
@@ -63,7 +64,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
       PersistentTabConfig(
         screen: BlocProvider(
           create: (context) => ZakatNisabCubit(),
-          child: const Scaffold(),
+          child: const ZakatNisabPage(),
         ),
         item: ItemConfig(
           icon: const Icon(Icons.monetization_on_outlined),
