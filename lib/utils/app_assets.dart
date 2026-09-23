@@ -6,4 +6,6 @@ class AppAssets {
   static const String maghribIcon = 'assets/icons/sunset.png';
   static const String ishaIcon = 'assets/icons/moon.png';
   static const String prayerWallpaper = 'assets/images/prayer_wallpaper.jpg';
+  static const String goldIcon = 'assets/icons/gold.png';
+  static const String silverIcon = 'assets/icons/silver.png';
 }

@@ -31,13 +31,8 @@ flutter:
   uses-material-design: true
   assets:
     - .env
-    - assets/icons/moonset.png
-    - assets/icons/sunrise.png
-    - assets/icons/afternoon.png
-    - assets/icons/sun.png
-    - assets/icons/sunset.png
-    - assets/icons/moon.png
-    - assets/images/prayer_wallpaper.jpg
+    - assets/icons/
+    - assets/images/
 
 flutter_intl:
   enabled: true

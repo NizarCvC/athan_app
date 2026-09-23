@@ -94,28 +94,26 @@ class TodayFastingWidget extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(24.0),
                 child: Center(
-                  child: IntrinsicHeight(
-                    child: Row(
-                      mainAxisAlignment: .center,
-                      children: [
-                        _buildTimeWithTitle(
-                          context: context,
-                          title: 'Suhoor',
-                          icon: Icons.nightlight_round,
-                          time: fastingDay.time?.sahur ?? '',
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 35.0),
-                          child: CustomVerticalDivider(),
-                        ),
-                        _buildTimeWithTitle(
-                          context: context,
-                          title: 'Iftar',
-                          icon: Icons.sunny,
-                          time: fastingDay.time?.iftar ?? '',
-                        ),
-                      ],
-                    ),
+                  child: Row(
+                    mainAxisAlignment: .center,
+                    children: [
+                      _buildTimeWithTitle(
+                        context: context,
+                        title: 'Suhoor',
+                        icon: Icons.nightlight_round,
+                        time: fastingDay.time?.sahur ?? '',
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 35.0),
+                        child: CustomVerticalDivider(),
+                      ),
+                      _buildTimeWithTitle(
+                        context: context,
+                        title: 'Iftar',
+                        icon: Icons.sunny,
+                        time: fastingDay.time?.iftar ?? '',
+                      ),
+                    ],
                   ),
                 ),
               ),

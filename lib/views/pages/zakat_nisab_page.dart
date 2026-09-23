@@ -1,3 +1,4 @@
+import 'package:athan_app/utils/app_assets.dart';
 import 'package:athan_app/utils/theme/app_colors.dart';
 import 'package:athan_app/view_models/zakat_nisab_cubit/zakat_nisab_cubit.dart';
 import 'package:athan_app/views/widgets/shared_widgets/custom_error_widget.dart';
@@ -46,16 +47,22 @@ class ZakatNisabPage extends StatelessWidget {
                       SizedBox(height: size.height * 0.03),
                       NisabCardWidget(
                         metal: zakatNisabInfo.nisabThresholds!.gold!,
-                        icon: const Icon(Icons.money),
+                        icon: Image.asset(
+                          AppAssets.goldIcon,
+                          width: size.width * 0.1,
+                        ),
                         title: 'Gold',
-                        color: Colors.yellow,
+                        gradientColors: AppColors.goldGradient,
                       ),
                       SizedBox(height: size.height * 0.03),
                       NisabCardWidget(
                         metal: zakatNisabInfo.nisabThresholds!.silver!,
-                        icon: const Icon(Icons.diamond),
+                        icon: Image.asset(
+                          AppAssets.silverIcon,
+                          width: size.width * 0.1,
+                        ),
                         title: 'Silver',
-                        color: Colors.grey,
+                        gradientColors: AppColors.silverGradient,
                       ),
                     ],
                   ),

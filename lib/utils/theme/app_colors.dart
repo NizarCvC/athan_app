@@ -10,5 +10,14 @@ class AppColors {
   static const Color grey1 = Colors.grey;
   static const Color grey2 = Color(0xFFf5f9f5);
   static const Color yellow = Colors.yellow;
+  static const Color gold = Color(0xFFffd21e);
+  static const List<Color> goldGradient = [
+    Color(0xFFC5A059),
+    Color(0xFF9E7736),
+  ];
+  static const List<Color> silverGradient = [
+    Color(0xFF475569),
+    Color(0xFF1E293B),
+  ];
   static const Color translucentGreen = Color(0xFFdae6dd);
 }
