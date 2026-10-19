@@ -6,9 +6,9 @@ class SettingsState {
   final bool is24TimeFormat;
   final bool isGregorianFormat;
   final String cityName;
-  final ZakatStandard? standard;
-  final SupportedCurrency currency;
-  final ZakatUnit unit;
+  final ZakatStandard zakatStandard;
+  final SupportedCurrency supportedCurrency;
+  final ZakatUnit zakatUnit;
 
   SettingsState({
     this.themeMode = ThemeMode.light,
@@ -16,9 +16,9 @@ class SettingsState {
     this.is24TimeFormat = true,
     this.isGregorianFormat = true,
     this.cityName = 'Medina',
-    this.standard = .common,
-    this.currency = .usd,
-    this.unit = .gram,
+    this.zakatStandard = ZakatStandard.classical,
+    this.supportedCurrency = SupportedCurrency.usd,
+    this.zakatUnit = ZakatUnit.gram,
   });
 
   SettingsState copyWith({
@@ -27,9 +27,9 @@ class SettingsState {
     bool? is24TimeFormat,
     bool? isGregorianFormat,
     String? cityName,
-    ZakatStandard? standard,
-    SupportedCurrency? currency,
-    ZakatUnit? unit,
+    ZakatStandard? zakatStandard,
+    SupportedCurrency? supportedCurrency,
+    ZakatUnit? zakatUnit,
   }) {
     return SettingsState(
       themeMode: themeMode ?? this.themeMode,
@@ -37,9 +37,9 @@ class SettingsState {
       is24TimeFormat: is24TimeFormat ?? this.is24TimeFormat,
       isGregorianFormat: isGregorianFormat ?? this.isGregorianFormat,
       cityName: cityName ?? this.cityName,
-      standard: standard ?? this.standard,
-      currency: currency ?? this.currency,
-      unit: unit ?? this.unit,
+      zakatStandard: zakatStandard ?? this.zakatStandard,
+      supportedCurrency: supportedCurrency ?? this.supportedCurrency,
+      zakatUnit: zakatUnit ?? this.zakatUnit,
     );
   }
 }

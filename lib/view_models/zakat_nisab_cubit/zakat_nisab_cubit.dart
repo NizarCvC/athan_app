@@ -21,9 +21,9 @@ class ZakatNisabCubit extends Cubit<ZakatNisabState> {
     try {
       final settings = _settingsCubit.state;
       final params = ZakatNisabParams(
-        standard: settings.standard,
-        currency: settings.currency,
-        unit: settings.unit,
+        standard: settings.zakatStandard,
+        currency: settings.supportedCurrency,
+        unit: settings.zakatUnit,
         apiKey: AppConstants.apiKey,
       );
 
@@ -33,8 +33,7 @@ class ZakatNisabCubit extends Cubit<ZakatNisabState> {
 
       if (zakatNisabInfo.data != null) {
         emit(FetchedZakatNisab(zakatNisabInfo: zakatNisabInfo.data!));
-      }
-      else {
+      } else {
         emit(FetchingZakatNisabFailed('There is no zakat nisab data.'));
       }
     } catch (e) {

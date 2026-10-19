@@ -9,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'settings_state.dart';
 
-// TODO: need to add functionality for others
 class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit() : super(SettingsState()) {
     _loadSettings();
@@ -38,6 +37,18 @@ class SettingsCubit extends Cubit<SettingsState> {
           AppLocalDatabaseTags.calenderFormatTag,
         ) ??
         true;
+    final zakatStandard = await _localDatabaseServices.getString(
+          AppLocalDatabaseTags.zakatStandardTag,
+        ) ??
+        ZakatStandard.classical.value;
+    final zakatCurrency = await _localDatabaseServices.getString(
+          AppLocalDatabaseTags.zakatCurrencyTag,
+        ) ??
+        SupportedCurrency.usd.code;
+    final zakatUnit = await _localDatabaseServices.getString(
+          AppLocalDatabaseTags.zakatUnitTag,
+        ) ??
+        ZakatUnit.gram.value;
 
     emit(
       state.copyWith(
@@ -45,6 +56,9 @@ class SettingsCubit extends Cubit<SettingsState> {
         languageCode: SupportedLanguage.values.asNameMap()[lang],
         is24TimeFormat: is24TimeFormat,
         isGregorianFormat: isGregorianFormat,
+        zakatStandard: ZakatStandard.values.asNameMap()[zakatStandard],
+        supportedCurrency: SupportedCurrency.values.asNameMap()[zakatCurrency],
+        zakatUnit: ZakatUnit.values.asNameMap()[zakatUnit],
       ),
     );
   }
@@ -82,4 +96,29 @@ class SettingsCubit extends Cubit<SettingsState> {
     );
     emit(state.copyWith(isGregorianFormat: isGregorianFormat));
   }
+
+  Future<void> changeZakatStandard(ZakatStandard standard) async {
+    await _localDatabaseServices.setString(
+      AppLocalDatabaseTags.zakatStandardTag,
+      standard.value,
+    );
+    emit(state.copyWith(zakatStandard: standard));
+  }
+
+  Future<void> changeZakatCurrency(SupportedCurrency currency) async {
+    await _localDatabaseServices.setString(
+      AppLocalDatabaseTags.zakatCurrencyTag,
+      currency.code,
+    );
+    emit(state.copyWith(supportedCurrency: currency));
+  }
+
+  Future<void> changeZakatUnit(ZakatUnit unit) async {
+    await _localDatabaseServices.setString(
+      AppLocalDatabaseTags.zakatUnitTag,
+      unit.value,
+    );
+    emit(state.copyWith(zakatUnit: unit));
+  }
+
 }

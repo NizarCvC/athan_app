@@ -4,6 +4,7 @@ import 'package:athan_app/view_models/zakat_nisab_cubit/zakat_nisab_cubit.dart';
 import 'package:athan_app/views/widgets/shared_widgets/custom_error_widget.dart';
 import 'package:athan_app/views/widgets/shared_widgets/loading_widget.dart';
 import 'package:athan_app/views/widgets/zakat_nisab_widgets/nisab_card_widget.dart';
+import 'package:athan_app/views/widgets/zakat_nisab_widgets/zakat_configuration_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,6 +45,7 @@ class ZakatNisabPage extends StatelessWidget {
                           color: AppColors.grey1,
                         ),
                       ),
+                      const ZakatConfigurationWidget(),
                       SizedBox(height: size.height * 0.03),
                       NisabCardWidget(
                         metal: zakatNisabInfo.nisabThresholds!.gold!,
@@ -71,11 +73,16 @@ class ZakatNisabPage extends StatelessWidget {
             ),
           );
         } else if (state is FetchingZakatNisabFailed) {
-          return CustomErrorWidget(errorMessage: state.errorMessage);
+          return Scaffold(
+            body: Center(
+              child: CustomErrorWidget(errorMessage: state.errorMessage),
+            ),
+          );
         } else {
           return const SizedBox.shrink();
         }
       },
     );
   }
+
 }
