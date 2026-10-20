@@ -1,11 +1,10 @@
 import 'package:athan_app/utils/generated/l10n.dart';
 import 'package:athan_app/utils/theme/app_colors.dart';
-import 'package:athan_app/view_models/dua_cubit/dua_cubit.dart';
 import 'package:athan_app/view_models/fasting_cubit/fasting_cubit.dart';
 import 'package:athan_app/view_models/prayer_time_cubit/prayer_time_cubit.dart';
-import 'package:athan_app/view_models/ruqyah_cubit/ruqyah_cubit.dart';
 import 'package:athan_app/view_models/settings_cubit/settings_cubit.dart';
 import 'package:athan_app/view_models/zakat_nisab_cubit/zakat_nisab_cubit.dart';
+import 'package:athan_app/views/pages/duas_page.dart';
 import 'package:athan_app/views/pages/fasting_page.dart';
 import 'package:athan_app/views/pages/prayer_page.dart';
 import 'package:athan_app/views/pages/zakat_nisab_page.dart';
@@ -42,7 +41,8 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
       PersistentTabConfig(
         screen: BlocProvider(
           create: (context) =>
-              PrayerTimeCubit(settingsCubit: settingsCubit)..fetchTodayPrayerTimes(),
+              PrayerTimeCubit(settingsCubit: settingsCubit)
+                ..fetchTodayPrayerTimes(),
           child: const PrayerPage(),
         ),
         item: ItemConfig(
@@ -53,7 +53,8 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
       ),
       PersistentTabConfig(
         screen: BlocProvider(
-          create: (context) => FastingCubit(settingsCubit: settingsCubit)..fetchFastingInfo(),
+          create: (context) =>
+              FastingCubit(settingsCubit: settingsCubit)..fetchFastingInfo(),
           child: const FastingPage(),
         ),
         item: ItemConfig(
@@ -64,7 +65,9 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
       ),
       PersistentTabConfig(
         screen: BlocProvider(
-          create: (context) => ZakatNisabCubit(settingsCubit: settingsCubit)..fetchZakatNisabInfo(),
+          create: (context) =>
+              ZakatNisabCubit(settingsCubit: settingsCubit)
+                ..fetchZakatNisabInfo(),
           child: const ZakatNisabPage(),
         ),
         item: ItemConfig(
@@ -74,13 +77,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
         ),
       ),
       PersistentTabConfig(
-        screen: MultiBlocProvider(
-          providers: [
-            BlocProvider(create: (context) => DuaCubit()),
-            BlocProvider(create: (context) => RuqyahCubit()),
-          ],
-          child: const Scaffold(),
-        ),
+        screen: const DuasPage(),
         item: ItemConfig(
           icon: const Icon(Icons.back_hand_outlined),
           title: S.of(context).duas,

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const Color primaryColor = Color(0xFF31893b);
-  static const Color darkPrimaryColor = Color(0xFF1e5525);
+  static const Color darkPrimaryColor = Color(0xFF1B5E20);
+  static const Color accentGold = Color(0xFFFFD54F);
   static const Color black = Color.fromARGB(255, 20, 19, 28);
   static const Color white1 = Colors.white;
   static const Color white2 = Color(0xFFf8fafc);
@@ -11,6 +12,8 @@ class AppColors {
   static const Color grey2 = Color(0xFFf5f9f5);
   static const Color yellow = Colors.yellow;
   static const Color gold = Color(0xFFffd21e);
+  static const Color lightBg = Color(0xFFF7F9F8);
+  static const Color darkBg = Color(0xFF0F172A);
   static const List<Color> goldGradient = [
     Color(0xFFC5A059),
     Color(0xFF9E7736),
