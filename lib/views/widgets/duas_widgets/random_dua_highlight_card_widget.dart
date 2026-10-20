@@ -1,6 +1,7 @@
 import 'package:athan_app/utils/theme/app_colors.dart';
 import 'package:athan_app/view_models/dua_cubit/dua_cubit.dart';
 import 'package:athan_app/view_models/settings_cubit/settings_cubit.dart';
+import 'package:athan_app/views/widgets/shared_widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,7 +45,7 @@ class RandomDuaHighlightCardWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: const CircularProgressIndicator.adaptive(),
+                  child: const LoadingWidget(),
                 );
               } else if (state is FetchedRandomDua) {
                 final duaTranslation = state.duaTranslation;

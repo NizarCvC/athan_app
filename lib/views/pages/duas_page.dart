@@ -1,3 +1,4 @@
+import 'package:athan_app/utils/router/app_router.dart';
 import 'package:athan_app/views/widgets/duas_widgets/dua_navigation_card.dart';
 import 'package:athan_app/views/widgets/duas_widgets/random_dua_highlight_card_widget.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +62,12 @@ class DuasPage extends StatelessWidget {
               badgeText: '99 Names',
               icon: Icons.auto_awesome_rounded,
               gradientColors: const [Color(0xFF31893b), Color(0xFF1B5E20)],
-              onTap: () {},
+              onTap: () {
+                Navigator.of(
+                  context,
+                  rootNavigator: true,
+                ).pushNamed(AppRoutes.asmaUlHusna);
+              },
             ),
             SizedBox(height: size.height * 0.01),
             DuaNavigationCard(
