@@ -46,8 +46,8 @@ class NisabCardWidget extends StatelessWidget {
               right: -20,
               top: -20,
               child: SizedBox(
-                width: 140,
-                height: 140,
+                width: size.width * 0.3,
+                height: size.height * 0.15,
                 child: Opacity(
                   opacity: 0.05,
                   child: ColorFiltered(
@@ -134,7 +134,8 @@ class NisabCardWidget extends StatelessWidget {
                       ),
                       children: [
                         TextSpan(
-                          text: settings.supportedCurrency.code.toUpperCase(),
+                          text:
+                              ' ${settings.supportedCurrency.code.toUpperCase()}',
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
